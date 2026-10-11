@@ -6,662 +6,436 @@
 <title>LIG-1-KILLER | AETHERNAL LEAGUE 1</title>
 <style>
 :root {
-  --blue: #071a40;
-  --blue2: #123d7a;
+  --blue: #071b49;
+  --blue2: #123c84;
   --yellow: #ffd700;
-  --white: #ffffff;
-  --bg: #f1f4f9;
-  --green: #16864a;
+  --bg: #f1f5fb;
+  --white: #fff;
+  --text: #17243b;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  color: var(--text);
   background: var(--bg);
-  color: #18243a;
 }
 header {
+  background: linear-gradient(135deg, var(--blue), var(--blue2));
+  color: white;
   padding: 28px 16px;
   text-align: center;
-  color: white;
-  background: linear-gradient(135deg, var(--blue), var(--blue2));
   border-bottom: 5px solid var(--yellow);
 }
-header h1 { margin: 0; font-size: clamp(25px, 5vw, 42px); }
-header h1 span { color: var(--yellow); }
+header h1 { margin: 0; font-size: clamp(25px, 5vw, 40px); }
 header p { margin-bottom: 0; }
+.badge {
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--blue);
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
 nav {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
   background: var(--blue);
   padding: 12px;
 }
-nav button {
-  border: 1px solid #47628d;
-  padding: 11px 16px;
-  background: transparent;
-  color: white;
-  border-radius: 7px;
+nav button, button {
+  border: 0;
   cursor: pointer;
+  border-radius: 8px;
+  padding: 11px 14px;
   font-weight: bold;
 }
-nav button.active, nav button:hover {
-  color: var(--blue);
-  background: var(--yellow);
-}
-main { max-width: 1150px; margin: auto; padding: 18px; }
+nav button { background: white; color: var(--blue); }
+nav button.active, .primary { background: var(--yellow); color: var(--blue); }
+main { max-width: 1100px; margin: 22px auto; padding: 0 14px; }
 .panel {
   background: white;
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  box-shadow: 0 3px 12px #12234412;
+  padding: 18px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  box-shadow: 0 3px 14px #001a4210;
   overflow-x: auto;
 }
 h2 { color: var(--blue); margin-top: 0; }
-.stats {
+.cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
   gap: 12px;
-  margin-bottom: 20px;
 }
-.stat {
-  padding: 18px;
+.card {
+  border: 1px solid #e1e7f0;
+  border-top: 4px solid var(--yellow);
+  padding: 14px;
   border-radius: 10px;
-  background: var(--blue);
-  color: white;
 }
-.stat strong { display: block; font-size: 26px; color: var(--yellow); }
-.stat span { font-size: 13px; }
-table { border-collapse: collapse; width: 100%; min-width: 650px; }
-th, td { padding: 12px 9px; border-bottom: 1px solid #e3e8f0; text-align: center; }
+.card strong { display: block; font-size: 23px; color: var(--blue); }
+table { width: 100%; border-collapse: collapse; min-width: 620px; }
+th, td { padding: 11px 8px; text-align: center; border-bottom: 1px solid #e4eaf2; }
 th { background: var(--blue); color: white; }
-tbody tr:nth-child(even) { background: #f6f8fc; }
-tbody tr:first-child td { font-weight: bold; }
+td:nth-child(2) { text-align: left; font-weight: bold; }
+tr:first-child td:first-child { color: #b8860b; font-weight: bold; }
 input, select {
-  padding: 11px;
-  border: 1px solid #ccd4e0;
-  border-radius: 7px;
-  font-size: 15px;
   width: 100%;
-  margin: 5px 0 12px;
-}
-label { font-size: 14px; font-weight: bold; }
-.btn {
-  padding: 11px 16px;
-  border: 0;
+  padding: 11px;
+  border: 1px solid #cbd5e1;
   border-radius: 7px;
-  cursor: pointer;
-  background: var(--blue);
-  color: white;
-  font-weight: bold;
-  margin: 3px;
+  margin: 5px 0 12px;
+  background: white;
 }
-.btn.yellow { background: var(--yellow); color: var(--blue); }
-.btn.red { background: #c52b35; }
-.btn.green { background: var(--green); }
+label { font-weight: bold; font-size: 14px; }
 .formgrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
 }
 .match {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding: 14px 8px;
-  border-bottom: 1px solid #e3e8f0;
+  padding: 12px 4px;
+  border-bottom: 1px solid #e5eaf2;
 }
-.score { font-weight: bold; color: var(--blue2); white-space: nowrap; }
-.badge {
-  display: inline-block;
-  background: #e7eef9;
-  color: var(--blue);
-  border-radius: 5px;
-  padding: 5px 8px;
-  font-size: 12px;
-}
-.hidden { display: none !important; }
-.notice { font-size: 13px; color: #536078; line-height: 1.6; }
-footer {
-  background: var(--blue);
-  color: white;
-  text-align: center;
-  padding: 22px;
-  border-top: 4px solid var(--yellow);
+.match .home { text-align: right; }
+.match .away { text-align: left; }
+.score { font-weight: bold; white-space: nowrap; color: var(--blue); }
+.small { font-size: 12px; color: #667085; }
+.hidden { display: none; }
+.danger { background: #fee2e2; color: #991b1b; }
+footer { background: var(--blue); color: white; padding: 22px; text-align: center; }
+@media(max-width: 500px) {
+  .match { grid-template-columns: 1fr auto 1fr; font-size: 13px; gap: 5px; }
+  .panel { padding: 13px; }
 }
 </style>
 </head>
 <body>
 <header>
-  <h1>⚽ <span>AETHERNAL</span> LEAGUE 1</h1>
-  <p>LIG-1-KILLER · CHAMPIONSHIP OFFICIEL</p>
+  <div class="badge">SAISON 2026</div>
+  <h1>🏆 AETHERNAL LEAGUE 1</h1>
+  <p>LIG-1-KILLER · Lig eFootball ofisyèl la</p>
 </header>
 <nav>
-  <button class="active" onclick="showTab('home',this)">🏠 Akèy</button>
-  <button onclick="showTab('table',this)">📊 Klasman</button>
-  <button onclick="showTab('matches',this)">⚽ Match yo</button>
-  <button onclick="showTab('teams',this)">👥 Ekip yo</button>
-  <button onclick="showTab('admin',this)">🔐 Admin Panel</button>
+  <button class="active" data-tab="home">Akèy</button>
+  <button data-tab="table">Klasman</button>
+  <button data-tab="fixtures">Match yo</button>
+  <button data-tab="results">Rezilta</button>
+  <button data-tab="admin">Administratè</button>
 </nav>
 <main>
-  <section id="home" class="tab">
-    <div class="stats">
-      <div class="stat"><strong id="teamCount">12</strong><span>Ekip/Jwè</span></div>
-      <div class="stat"><strong id="playedCount">0</strong><span>Match jwe</span></div>
-      <div class="stat"><strong id="remainingCount">132</strong><span>Match ki rete</span></div>
-      <div class="stat"><strong id="leaderName">—</strong><span>Lidè chanpyona a</span></div>
-    </div>
-    <div class="panel">
-      <h2>🏆 Byenveni nan AETHERNAL LEAGUE 1</h2>
-      <p>Swiv tout rezilta, match ak klasman ofisyèl LIG-1-KILLER la.</p>
-      <p><span class="badge">SISTÈM LIGA</span> <span class="badge">ALE-RETOU</span> <span class="badge">12 JWÈ</span></p>
-    </div>
-    <div class="panel">
-      <h2>🥇 Top 5 klasman</h2>
-      <div id="topFive"></div>
-    </div>
-    <div class="panel">
-      <h2>📅 Pwochen match yo</h2>
-      <div id="nextMatches"></div>
-    </div>
-  </section>
-  <section id="table" class="tab hidden">
-    <div class="panel">
-      <h2>📊 Klasman ofisyèl</h2>
-      <p class="notice">PTS = pwen · J = match jwe · V = viktwa · N = nil · D = defèt · DB = diferans gòl.</p>
-      <div id="standings"></div>
-    </div>
-  </section>
-  <section id="matches" class="tab hidden">
-    <div class="panel">
-      <h2>⚽ Tout match yo</h2>
+<section id="home" class="tab">
+  <div class="panel">
+    <h2>Byenveni nan AETHERNAL LEAGUE 1</h2>
+    <p>12 jwè · 12 klèb · Ale-retou · 22 jounen</p>
+    <p>Chak viktwa bay 3 pwen, match nil bay 1 pwen, defèt bay 0 pwen.</p>
+  </div>
+  <div class="cards">
+    <div class="card">👥 Jwè yo<strong id="totalTeams">12</strong></div>
+    <div class="card">⚽ Match total<strong id="totalMatches">132</strong></div>
+    <div class="card">📅 Jounen<strong>22</strong></div>
+    <div class="card">✅ Match fini<strong id="played">0</strong></div>
+  </div>
+  <div class="panel" style="margin-top:18px">
+    <h2>🏅 Premye plas yo</h2>
+    <div id="topThree"></div>
+  </div>
+</section>
+<section id="table" class="tab hidden">
+  <div class="panel">
+    <h2>📊 Klasman ofisyèl</h2>
+    <p class="small">Klasman an mete ajou otomatikman lè ou anrejistre yon rezilta.</p>
+    <table>
+      <thead><tr>
+        <th>#</th><th>Jwè / Klèb</th><th>MJ</th><th>V</th><th>N</th><th>D</th><th>GF</th><th>GA</th><th>DG</th><th>P</th>
+      </tr></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+</section>
+<section id="fixtures" class="tab hidden">
+  <div class="panel">
+    <h2>📅 Kalandriye match yo</h2>
+    <label for="roundSelect">Chwazi jounen</label>
+    <select id="roundSelect"></select>
+    <div id="roundMatches"></div>
+  </div>
+</section>
+<section id="results" class="tab hidden">
+  <div class="panel">
+    <h2>⚽ Rezilta anrejistre</h2>
+    <div id="resultsList"></div>
+  </div>
+</section>
+<section id="admin" class="tab hidden">
+  <div class="panel">
+    <h2>🔐 Panèl administratè</h2>
+    <p>Antre modpas la pou anrejistre oswa modifye rezilta yo sou aparèy sa a.</p>
+    <label for="password">Modpas administratè</label>
+    <input id="password" type="password" placeholder="Antre modpas la">
+    <button class="primary" id="loginBtn">Konekte</button>
+    <p id="loginMessage" role="status"></p>
+    <div id="adminArea" class="hidden">
+      <hr>
+      <h3>Anrejistre yon rezilta</h3>
       <div class="formgrid">
-        <div>
-          <label>Chèche jwè</label>
-          <input id="searchMatch" placeholder="Ekri non jwè a..." oninput="renderMatches()">
-        </div>
-        <div>
-          <label>Jounen</label>
-          <select id="roundFilter" onchange="renderMatches()">
-            <option value="all">Tout jounen yo</option>
-          </select>
-        </div>
-        <div>
-          <label>Estati</label>
-          <select id="statusFilter" onchange="renderMatches()">
-            <option value="all">Tout match</option>
-            <option value="pending">Match ki poko jwe</option>
-            <option value="played">Match ki fini</option>
-          </select>
-        </div>
+        <div><label for="matchRound">Jounen</label><select id="matchRound"></select></div>
+        <div><label for="matchSelect">Match</label><select id="matchSelect"></select></div>
+        <div><label for="homeGoals">Gòl ekip lakay</label><input id="homeGoals" type="number" min="0" max="99" placeholder="0"></div>
+        <div><label for="awayGoals">Gòl ekip deplasman</label><input id="awayGoals" type="number" min="0" max="99" placeholder="0"></div>
       </div>
-      <div id="matchList"></div>
+      <button class="primary" id="saveResult">💾 Anrejistre rezilta</button>
+      <button class="danger" id="logoutBtn">Dekonekte</button>
+      <hr>
+      <h3>Sovgad done yo</h3>
+      <p class="small">Telechaje yon sovgad JSON pou konsève rezilta yo. Done yo estoke lokalman nan navigatè sa a.</p>
+      <button id="exportBtn">Telechaje sovgad</button>
+      <label for="importFile">Retabli sovgad JSON</label>
+      <input type="file" id="importFile" accept=".json,application/json">
+      <button class="danger" id="resetBtn">Efase tout rezilta yo</button>
     </div>
-  </section>
-  <section id="teams" class="tab hidden">
-    <div class="panel">
-      <h2>👥 Ekip ki nan chanpyona a</h2>
-      <div id="teamList"></div>
-    </div>
-  </section>
-  <section id="admin" class="tab hidden">
-    <div class="panel" id="loginPanel">
-      <h2>🔐 Aksè administratè</h2>
-      <p class="notice">Premye fwa w ap itilize sit la, kreye modpas administratè a. Chwazi yon modpas ou pa itilize lòt kote.</p>
-      <label id="passwordLabel">Kreye modpas administratè</label>
-      <input id="adminPassword" type="password" placeholder="Modpas administratè">
-      <button class="btn yellow" onclick="loginAdmin()">Antre</button>
-      <p id="loginMessage" class="notice"></p>
-    </div>
-    <div id="adminPanel" class="hidden">
-      <div class="panel">
-        <h2>⚙️ Jesyon administratè</h2>
-        <p class="notice">Ou kapab mete rezilta, ajoute oswa retire ekip, epi telechaje yon kopi done yo.</p>
-        <button class="btn red" onclick="logoutAdmin()">Dekonekte</button>
-        <button class="btn green" onclick="exportData()">Telechaje backup</button>
-        <button class="btn" onclick="document.getElementById('importFile').click()">Enpòte backup</button>
-        <input id="importFile" type="file" accept=".json" class="hidden" onchange="importData(event)">
-      </div>
-      <div class="panel">
-        <h2>✏️ Antre oswa modifye yon rezilta</h2>
-        <div class="formgrid">
-          <div><label>Jwè lakay</label><select id="homePlayer"></select></div>
-          <div><label>Gòl lakay</label><input id="homeGoals" type="number" min="0" max="99" placeholder="0"></div>
-          <div><label>Gòl deyò</label><input id="awayGoals" type="number" min="0" max="99" placeholder="0"></div>
-          <div><label>Jwè deyò</label><select id="awayPlayer"></select></div>
-        </div>
-        <button class="btn yellow" onclick="saveResult()">💾 Sove rezilta</button>
-        <button class="btn" onclick="clearResultForm()">Anile</button>
-        <p id="resultMessage" class="notice"></p>
-      </div>
-      <div class="panel">
-        <h2>➕ Ajoute yon ekip/jwè</h2>
-        <label>Non jwè a</label>
-        <input id="newTeamName" placeholder="Ekri non jwè a">
-        <button class="btn yellow" onclick="addTeam()">Ajoute jwè</button>
-      </div>
-      <div class="panel">
-        <h2>👥 Modifye oswa retire ekip</h2>
-        <div id="adminTeamList"></div>
-      </div>
-      <div class="panel">
-        <h2>🔑 Chanje modpas administratè</h2>
-        <input id="oldPassword" type="password" placeholder="Ansyen modpas">
-        <input id="newPassword" type="password" placeholder="Nouvo modpas">
-        <button class="btn yellow" onclick="changePassword()">Chanje modpas</button>
-        <p id="passwordMessage" class="notice"></p>
-      </div>
-      <div class="panel">
-        <h2>⚠️ Zòn danje</h2>
-        <button class="btn red" onclick="resetResults()">Efase tout rezilta yo</button>
-        <button class="btn red" onclick="resetLeague()">Reyinisyalize tout chanpyona a</button>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 </main>
 <footer>
   <strong>AETHERNAL LEAGUE 1</strong>
   <p>LIG-1-KILLER · Tout dwa rezève</p>
 </footer>
 <script>
-const STORAGE_KEY = "lig1killer_data_v1";
-const PASS_KEY = "lig1killer_admin_password_v1";
-const initialNames = [
-  "Charlito", "T-BOT DXTR", "AETHERNAL XI", "YOUR KILLER",
-  "Kalika", "Ekip 6", "Ekip 7", "Ekip 8",
-  "Ekip 9", "Ekip 10", "Ekip 11", "Ekip 12"
+"use strict";
+const teams = [
+  {player:"Charlito 2.0", club:"Como 1907"},
+  {player:"Your Killer", club:"Rasisalai United"},
+  {player:"It's Jedex", club:"ATM"},
+  {player:"Lootchy", club:"Ajax"},
+  {player:"Wouch", club:"Real Madrid"},
+  {player:"Lil.Pedji", club:"La Plata AB"},
+  {player:"Nico", club:"Marseille"},
+  {player:"KALIKA", club:"Manchester United"},
+  {player:"Tom", club:"Kashiwa Reysol"},
+  {player:"Mugiwara", club:"Club América"},
+  {player:"Dariyis", club:"Bastia"},
+  {player:"Ti Papito", club:"Barcelone"}
 ];
-let data = loadData();
-let isAdmin = false;
-let editingMatchId = null;
-function defaultData() {
-  const teams = initialNames.map((name, i) => ({ id: i + 1, name }));
-  return { teams, matches: createSchedule(teams) };
-}
-function createSchedule(teams) {
-  const matches = [];
-  let id = 1;
+// Chanje modpas sa a anvan ou pibliye sit la.
+// Sekirite enpòtan: modpas ki nan HTML piblik pa ka rete sekrè.
+const ADMIN_PASSWORD = "AETHERNAL2026";
+const STORAGE_KEY = "aethernalLeagueResultsV1";
+function makeFixtures() {
+  // Round-robin: 6 match pa jounen, chak pè rankontre de fwa.
+  const list = [];
   const n = teams.length;
-  if (n < 2) return matches;
-  // Round-robin: chak pè jwè rankontre de fwa.
-  for (let round = 0; round < (n - 1) * 2; round++) {
-    for (let i = 0; i < n; i++) {
-      for (let j = i + 1; j < n; j++) {
-        const reverse = round >= n - 1;
-        const first = reverse ? teams[j] : teams[i];
-        const second = reverse ? teams[i] : teams[j];
-        matches.push({
-          id: id++,
-          round: round + 1,
-          home: first.id,
-          away: second.id,
-          homeGoals: null,
-          awayGoals: null
-        });
-      }
+  let rotation = Array.from({length:n}, (_,i)=>i);
+  for (let round=0; round<n-1; round++) {
+    const games = [];
+    for (let i=0; i<n/2; i++) {
+      let home = rotation[i];
+      let away = rotation[n-1-i];
+      if (round % 2 === 1) [home,away] = [away,home];
+      games.push({id:`${round+1}-${i+1}`,round:round+1,home,away,homeGoals:null,awayGoals:null});
     }
+    list.push(...games);
+    rotation = [rotation[0], rotation[n-1], ...rotation.slice(1,n-1)];
   }
-  return matches;
+  const firstLeg = list.map(m=>({...m}));
+  firstLeg.forEach(m => {
+    list.push({
+      id:`${m.round+11}-${m.id.split("-")[1]}`,
+      round:m.round+11,
+      home:m.away,
+      away:m.home,
+      homeGoals:null,
+      awayGoals:null
+    });
+  });
+  return list;
 }
-function loadData() {
+let fixtures = makeFixtures();
+function loadResults() {
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      if (parsed && Array.isArray(parsed.teams) && Array.isArray(parsed.matches)) {
-        return parsed;
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    fixtures.forEach(m => {
+      const s = saved[m.id];
+      if (s && Number.isInteger(s.homeGoals) && Number.isInteger(s.awayGoals)
+          && s.homeGoals >= 0 && s.awayGoals >= 0) {
+        m.homeGoals = s.homeGoals;
+        m.awayGoals = s.awayGoals;
       }
-    }
-  } catch (e) {}
-  return defaultData();
-}
-function saveData() {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    });
   } catch (e) {
-    alert("Navigatè a pa kapab sove done yo. Telechaje yon backup.");
+    console.warn("Pa t kapab chaje done yo.",e);
   }
 }
-function teamName(id) {
-  const team = data.teams.find(t => t.id === Number(id));
-  return team ? team.name : "Ekip retire";
+function saveResults() {
+  const data = {};
+  fixtures.forEach(m => {
+    if (m.homeGoals !== null && m.awayGoals !== null)
+      data[m.id] = {homeGoals:m.homeGoals,awayGoals:m.awayGoals};
+  });
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
 }
-function showTab(id, btn) {
-  document.querySelectorAll(".tab").forEach(el => el.classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
-  document.querySelectorAll("nav button").forEach(el => el.classList.remove("active"));
-  if (btn) btn.classList.add("active");
-  renderAll();
+function teamName(i) {
+  return `${teams[i].player} (${teams[i].club})`;
 }
 function stats() {
-  const rows = {};
-  data.teams.forEach(t => rows[t.id] = {
-    id: t.id, name: t.name, J: 0, V: 0, N: 0, D: 0,
-    BM: 0, BC: 0, PTS: 0
-  });
-  data.matches.forEach(m => {
+  const s = teams.map((t,i)=>({
+    i,player:t.player,club:t.club,mj:0,v:0,n:0,d:0,gf:0,ga:0,p:0
+  }));
+  fixtures.forEach(m=>{
     if (m.homeGoals === null || m.awayGoals === null) return;
-    if (!rows[m.home] || !rows[m.away]) return;
-    const h = rows[m.home], a = rows[m.away];
-    h.J++; a.J++;
-    h.BM += m.homeGoals; h.BC += m.awayGoals;
-    a.BM += m.awayGoals; a.BC += m.homeGoals;
-    if (m.homeGoals > m.awayGoals) {
-      h.V++; h.PTS += 3; a.D++;
-    } else if (m.homeGoals < m.awayGoals) {
-      a.V++; a.PTS += 3; h.D++;
-    } else {
-      h.N++; a.N++; h.PTS++; a.PTS++;
-    }
+    const h=s[m.home], a=s[m.away];
+    h.mj++; a.mj++;
+    h.gf+=m.homeGoals; h.ga+=m.awayGoals;
+    a.gf+=m.awayGoals; a.ga+=m.homeGoals;
+    if(m.homeGoals>m.awayGoals){h.v++;a.d++;h.p+=3;}
+    else if(m.homeGoals<m.awayGoals){a.v++;h.d++;a.p+=3;}
+    else {h.n++;a.n++;h.p++;a.p++;}
   });
-  return Object.values(rows).map(t => ({
-    ...t, DB: t.BM - t.BC
-  })).sort((a, b) =>
-    b.PTS - a.PTS ||
-    b.DB - a.DB ||
-    b.BM - a.BM ||
-    a.name.localeCompare(b.name)
-  );
+  s.forEach(x=>x.dg=x.gf-x.ga);
+  return s.sort((a,b)=>b.p-a.p || b.dg-a.dg || b.gf-a.gf || a.player.localeCompare(b.player));
 }
-function renderStandings(target = "standings", limit = null) {
-  const list = stats();
-  const shown = limit ? list.slice(0, limit) : list;
-  const html = `<table>
-    <thead><tr><th>#</th><th>Jwè</th><th>J</th><th>V</th><th>N</th><th>D</th><th>BM</th><th>BC</th><th>DB</th><th>PTS</th></tr></thead>
-    <tbody>${shown.map((t, i) => `<tr>
-      <td>${i + 1}</td><td>${escapeHtml(t.name)}</td><td>${t.J}</td>
-      <td>${t.V}</td><td>${t.N}</td><td>${t.D}</td>
-      <td>${t.BM}</td><td>${t.BC}</td><td>${t.DB}</td><td>${t.PTS}</td>
-    </tr>`).join("")}</tbody></table>`;
-  document.getElementById(target).innerHTML = html;
+function renderTable() {
+  const s=stats();
+  document.getElementById("tableBody").innerHTML=s.map((t,pos)=>`
+    <tr><td>${pos+1}</td><td>${escapeHtml(t.player)}<br><span class="small">${escapeHtml(t.club)}</span></td>
+    <td>${t.mj}</td><td>${t.v}</td><td>${t.n}</td><td>${t.d}</td>
+    <td>${t.gf}</td><td>${t.ga}</td><td>${t.dg}</td><td><strong>${t.p}</strong></td></tr>
+  `).join("");
+  document.getElementById("topThree").innerHTML=s.slice(0,3).map((t,i)=>
+    `<p>${["🥇","🥈","🥉"][i]} <strong>${escapeHtml(t.player)}</strong> — ${escapeHtml(t.club)} · ${t.p} pwen</p>`
+  ).join("");
+  const played=fixtures.filter(m=>m.homeGoals!==null).length;
+  document.getElementById("played").textContent=played;
 }
-function renderMatches() {
-  const query = (document.getElementById("searchMatch")?.value || "").toLowerCase();
-  const round = document.getElementById("roundFilter")?.value || "all";
-  const status = document.getElementById("statusFilter")?.value || "all";
-  const list = data.matches.filter(m => {
-    const played = m.homeGoals !== null && m.awayGoals !== null;
-    const names = (teamName(m.home) + " " + teamName(m.away)).toLowerCase();
-    return names.includes(query) &&
-      (round === "all" || String(m.round) === round) &&
-      (status === "all" || (status === "played" ? played : !played));
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+function matchText(m) {
+  const score=m.homeGoals===null?"VS":`${m.homeGoals} - ${m.awayGoals}`;
+  return `<div class="match">
+    <div class="home">${escapeHtml(teamName(m.home))}</div>
+    <div class="score">${score}</div>
+    <div class="away">${escapeHtml(teamName(m.away))}</div>
+  </div>`;
+}
+function renderRound() {
+  const round=Number(document.getElementById("roundSelect").value || 1);
+  document.getElementById("roundMatches").innerHTML=
+    fixtures.filter(m=>m.round===round).map(matchText).join("");
+}
+function renderResults() {
+  const played=fixtures.filter(m=>m.homeGoals!==null).sort((a,b)=>a.round-b.round);
+  document.getElementById("resultsList").innerHTML=played.length
+    ?played.map(m=>`<p><strong>Jounen ${m.round}</strong>${matchText(m)}</p>`).join("")
+    :"<p>Pa gen rezilta ki anrejistre pou kounye a.</p>";
+}
+function refresh() {
+  renderTable(); renderRound(); renderResults(); populateMatchSelect();
+}
+function populateMatchSelect() {
+  const round=Number(document.getElementById("matchRound").value || 1);
+  const select=document.getElementById("matchSelect");
+  const old=select.value;
+  const matches=fixtures.filter(m=>m.round===round);
+  select.innerHTML=matches.map(m=>
+    `<option value="${m.id}">${escapeHtml(teams[m.home].player)} vs ${escapeHtml(teams[m.away].player)}</option>`
+  ).join("");
+  if(matches.some(m=>m.id===old)) select.value=old;
+  showSelectedScore();
+}
+function showSelectedScore() {
+  const m=fixtures.find(x=>x.id===document.getElementById("matchSelect").value);
+  if(!m)return;
+  document.getElementById("homeGoals").value=m.homeGoals===null?"":m.homeGoals;
+  document.getElementById("awayGoals").value=m.awayGoals===null?"":m.awayGoals;
+}
+function populateRounds() {
+  for(const id of ["roundSelect","matchRound"]) {
+    const el=document.getElementById(id);
+    el.innerHTML=Array.from({length:22},(_,i)=>
+      `<option value="${i+1}">Jounen ${i+1}</option>`
+    ).join("");
+  }
+}
+document.querySelectorAll("nav button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(s=>s.classList.add("hidden"));
+    document.getElementById(btn.dataset.tab).classList.remove("hidden");
+    document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b===btn));
+    if(btn.dataset.tab==="table")renderTable();
+    if(btn.dataset.tab==="fixtures")renderRound();
+    if(btn.dataset.tab==="results")renderResults();
   });
-  document.getElementById("matchList").innerHTML = list.length
-    ? list.map(m => {
-      const played = m.homeGoals !== null && m.awayGoals !== null;
-      return `<div class="match">
-        <div><span class="badge">Jounen ${m.round}</span><br>
-        <strong>${escapeHtml(teamName(m.home))}</strong> vs
-        <strong>${escapeHtml(teamName(m.away))}</strong></div>
-        <div class="score">${played ? `${m.homeGoals} - ${m.awayGoals}` : "VS"}</div>
-        ${isAdmin ? `<button class="btn yellow" onclick="editMatch(${m.id})">${played ? "Modifye" : "Mete rezilta"}</button>` : ""}
-      </div>`;
-    }).join("")
-    : "<p>Pa gen match ki koresponn ak rechèch la.</p>";
-}
-function renderTeams() {
-  document.getElementById("teamList").innerHTML =
-    `<table><thead><tr><th>#</th><th>Non jwè</th><th>Match jwe</th><th>Pwen</th></tr></thead><tbody>` +
-    stats().map((t, i) => `<tr><td>${i+1}</td><td>${escapeHtml(t.name)}</td><td>${t.J}</td><td>${t.PTS}</td></tr>`).join("") +
-    `</tbody></table>`;
-}
-function renderAdminTeams() {
-  const box = document.getElementById("adminTeamList");
-  if (!box) return;
-  box.innerHTML = data.teams.map(t => `
-    <div class="match">
-      <strong>${escapeHtml(t.name)}</strong>
-      <div>
-        <button class="btn" onclick="renameTeam(${t.id})">Chanje non</button>
-        <button class="btn red" onclick="removeTeam(${t.id})">Retire</button>
-      </div>
-    </div>`).join("");
-}
-function fillSelects() {
-  const options = data.teams.map(t =>
-    `<option value="${t.id}">${escapeHtml(t.name)}</option>`).join("");
-  ["homePlayer", "awayPlayer"].forEach(id => {
-    const el = document.getElementById(id);
-    const old = el.value;
-    el.innerHTML = options;
-    if ([...el.options].some(o => o.value === old)) el.value = old;
-  });
-  const roundFilter = document.getElementById("roundFilter");
-  const oldRound = roundFilter.value;
-  const rounds = [...new Set(data.matches.map(m => m.round))].sort((a,b) => a-b);
-  roundFilter.innerHTML = `<option value="all">Tout jounen yo</option>` +
-    rounds.map(r => `<option value="${r}">Jounen ${r}</option>`).join("");
-  if ([...roundFilter.options].some(o => o.value === oldRound)) roundFilter.value = oldRound;
-}
-function renderAll() {
-  const played = data.matches.filter(m => m.homeGoals !== null && m.awayGoals !== null).length;
-  document.getElementById("teamCount").textContent = data.teams.length;
-  document.getElementById("playedCount").textContent = played;
-  document.getElementById("remainingCount").textContent = data.matches.length - played;
-  document.getElementById("leaderName").textContent = stats()[0]?.name || "—";
-  renderStandings();
-  renderStandings("topFive", 5);
-  renderMatches();
-  renderTeams();
-  fillSelects();
-  document.getElementById("nextMatches").innerHTML = data.matches
-    .filter(m => m.homeGoals === null || m.awayGoals === null)
-    .slice(0, 5)
-    .map(m => `<div class="match"><span>J${m.round}: ${escapeHtml(teamName(m.home))} vs ${escapeHtml(teamName(m.away))}</span><span class="badge">Pou jwe</span></div>`)
-    .join("") || "<p>Tout match yo fini! 🏆</p>";
-  if (isAdmin) renderAdminTeams();
-}
-function loginAdmin() {
-  const pass = document.getElementById("adminPassword").value;
-  if (!pass) {
-    document.getElementById("loginMessage").textContent = "Tanpri antre yon modpas.";
+});
+document.getElementById("roundSelect").addEventListener("change",renderRound);
+document.getElementById("matchRound").addEventListener("change",populateMatchSelect);
+document.getElementById("matchSelect").addEventListener("change",showSelectedScore);
+document.getElementById("loginBtn").addEventListener("click",()=>{
+  const ok=document.getElementById("password").value===ADMIN_PASSWORD;
+  document.getElementById("adminArea").classList.toggle("hidden",!ok);
+  document.getElementById("loginMessage").textContent=ok
+    ?"Koneksyon reyisi. Ou kapab jere rezilta yo."
+    :"Modpas la pa kòrèk.";
+  if(ok) document.getElementById("password").value="";
+});
+document.getElementById("logoutBtn").addEventListener("click",()=>{
+  document.getElementById("adminArea").classList.add("hidden");
+  document.getElementById("loginMessage").textContent="Ou dekonekte.";
+});
+document.getElementById("saveResult").addEventListener("click",()=>{
+  const m=fixtures.find(x=>x.id===document.getElementById("matchSelect").value);
+  const h=document.getElementById("homeGoals").value;
+  const a=document.getElementById("awayGoals").value;
+  if(!m || h==="" || a==="" || !Number.isInteger(Number(h)) ||
+     !Number.isInteger(Number(a)) || Number(h)<0 || Number(a)<0 ||
+     Number(h)>99 || Number(a)>99) {
+    alert("Antre de kantite gòl valab, soti 0 rive 99.");
     return;
   }
-  let stored = localStorage.getItem(PASS_KEY);
-  if (!stored) {
-    if (pass.length < 8) {
-      document.getElementById("loginMessage").textContent =
-        "Chwazi yon modpas ki gen omwen 8 karaktè.";
-      return;
-    }
-    localStorage.setItem(PASS_KEY, pass);
-    stored = pass;
-    alert("Modpas administratè kreye sou navigatè sa a.");
-  }
-  if (pass === stored) {
-    isAdmin = true;
-    document.getElementById("loginPanel").classList.add("hidden");
-    document.getElementById("adminPanel").classList.remove("hidden");
-    document.getElementById("adminPassword").value = "";
-    document.getElementById("loginMessage").textContent = "";
-    renderAll();
-  } else {
-    document.getElementById("loginMessage").textContent = "Modpas la pa kòrèk.";
-  }
-}
-function logoutAdmin() {
-  isAdmin = false;
-  document.getElementById("adminPanel").classList.add("hidden");
-  document.getElementById("loginPanel").classList.remove("hidden");
-}
-function requireAdmin() {
-  if (!isAdmin) {
-    alert("Ou dwe konekte kòm administratè.");
-    return false;
-  }
-  return true;
-}
-function editMatch(id) {
-  if (!requireAdmin()) return;
-  const m = data.matches.find(x => x.id === id);
-  if (!m) return;
-  editingMatchId = id;
-  document.getElementById("homePlayer").value = m.home;
-  document.getElementById("awayPlayer").value = m.away;
-  document.getElementById("homeGoals").value = m.homeGoals ?? "";
-  document.getElementById("awayGoals").value = m.awayGoals ?? "";
-  document.getElementById("resultMessage").textContent =
-    `W ap modifye match Jounen ${m.round}.`;
-  document.querySelector('nav button:nth-child(5)').click();
-  document.getElementById("homeGoals").focus();
-}
-function saveResult() {
-  if (!requireAdmin()) return;
-  const home = Number(document.getElementById("homePlayer").value);
-  const away = Number(document.getElementById("awayPlayer").value);
-  const hgText = document.getElementById("homeGoals").value;
-  const agText = document.getElementById("awayGoals").value;
-  const hg = Number(hgText), ag = Number(agText);
-  if (!home || !away || home === away) {
-    alert("Chwazi 2 jwè diferan.");
-    return;
-  }
-  if (hgText === "" || agText === "" ||
-      !Number.isInteger(hg) || !Number.isInteger(ag) ||
-      hg < 0 || ag < 0 || hg > 99 || ag > 99) {
-    alert("Antre kantite gòl ki kòrèk.");
-    return;
-  }
-  let match = editingMatchId
-    ? data.matches.find(m => m.id === editingMatchId)
-    : data.matches.find(m => m.home === home && m.away === away);
-  if (!match) {
-    match = data.matches.find(m => m.home === away && m.away === home);
-  }
-  if (!match) {
-    alert("Match sa a pa egziste nan kalandriye a.");
-    return;
-  }
-  if (match.home !== home || match.away !== away) {
-    alert("Chwazi jwè lakay ak jwè deyò jan yo parèt nan match la.");
-    return;
-  }
-  match.homeGoals = hg;
-  match.awayGoals = ag;
-  editingMatchId = null;
-  saveData();
-  clearResultForm();
-  renderAll();
-  document.getElementById("resultMessage").textContent = "Rezilta a anrejistre avèk siksè!";
-}
-function clearResultForm() {
-  editingMatchId = null;
-  document.getElementById("homeGoals").value = "";
-  document.getElementById("awayGoals").value = "";
-  document.getElementById("resultMessage").textContent = "";
-}
-function addTeam() {
-  if (!requireAdmin()) return;
-  const name = document.getElementById("newTeamName").value.trim();
-  if (!name) return alert("Ekri non jwè a.");
-  if (data.teams.some(t => t.name.toLowerCase() === name.toLowerCase())) {
-    return alert("Non sa a egziste deja.");
-  }
-  if (data.teams.length >= 20) return alert("Limit la se 20 jwè.");
-  const id = Math.max(0, ...data.teams.map(t => t.id)) + 1;
-  data.teams.push({ id, name });
-  data.matches = createSchedule(data.teams);
-  document.getElementById("newTeamName").value = "";
-  saveData();
-  renderAll();
-  alert("Jwè a ajoute. Kalandriye a te rekreye; verifye match yo.");
-}
-function renameTeam(id) {
-  if (!requireAdmin()) return;
-  const team = data.teams.find(t => t.id === id);
-  if (!team) return;
-  const name = prompt("Nouvo non jwè a:", team.name);
-  if (!name || !name.trim()) return;
-  if (data.teams.some(t => t.id !== id && t.name.toLowerCase() === name.trim().toLowerCase())) {
-    return alert("Non sa a deja egziste.");
-  }
-  team.name = name.trim();
-  saveData();
-  renderAll();
-}
-function removeTeam(id) {
-  if (!requireAdmin()) return;
-  if (!confirm("Retire ekip sa a? Sa ap rekreye kalandriye a epi efase rezilta ki te antre yo.")) return;
-  data.teams = data.teams.filter(t => t.id !== id);
-  data.matches = createSchedule(data.teams);
-  saveData();
-  renderAll();
-}
-function resetResults() {
-  if (!requireAdmin()) return;
-  if (!confirm("Ou vle efase tout rezilta yo?")) return;
-  data.matches.forEach(m => { m.homeGoals = null; m.awayGoals = null; });
-  saveData();
-  renderAll();
-}
-function resetLeague() {
-  if (!requireAdmin()) return;
-  if (!confirm("ATANSYON: Sa ap efase tout chanjman epi retounen nan lis ekip pa defo. Kontinye?")) return;
-  data = defaultData();
-  saveData();
-  renderAll();
-}
-function changePassword() {
-  if (!requireAdmin()) return;
-  const oldPass = document.getElementById("oldPassword").value;
-  const newPass = document.getElementById("newPassword").value;
-  if (oldPass !== localStorage.getItem(PASS_KEY)) {
-    document.getElementById("passwordMessage").textContent = "Ansyen modpas la pa kòrèk.";
-    return;
-  }
-  if (newPass.length < 8) {
-    document.getElementById("passwordMessage").textContent = "Nouvo modpas la dwe gen omwen 8 karaktè.";
-    return;
-  }
-  localStorage.setItem(PASS_KEY, newPass);
-  document.getElementById("oldPassword").value = "";
-  document.getElementById("newPassword").value = "";
-  document.getElementById("passwordMessage").textContent = "Modpas la chanje.";
-}
-function exportData() {
-  if (!requireAdmin()) return;
-  const blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "LIG-1-KILLER-backup.json";
-  a.click();
-  URL.revokeObjectURL(a.href);
-}
-function importData(event) {
-  if (!requireAdmin()) return;
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    try {
-      const imported = JSON.parse(reader.result);
-      if (!Array.isArray(imported.teams) || !Array.isArray(imported.matches)) {
-        throw new Error("Fòma pa valab");
+  m.homeGoals=Number(h); m.awayGoals=Number(a);
+  saveResults(); refresh();
+  alert("Rezilta a anrejistre sou navigatè sa a!");
+});
+document.getElementById("exportBtn").addEventListener("click",()=>{
+  const blob=new Blob([JSON.stringify(JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}"),null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;a.download="aethernal-league-sovgad.json";a.click();
+  URL.revokeObjectURL(url);
+});
+document.getElementById("importFile").addEventListener("change",async e=>{
+  const file=e.target.files[0]; if(!file)return;
+  try{
+    const obj=JSON.parse(await file.text());
+    if(!obj||typeof obj!=="object"||Array.isArray(obj))throw new Error();
+    fixtures.forEach(m=>{
+      const s=obj[m.id];
+      m.homeGoals=null;m.awayGoals=null;
+      if(s&&Number.isInteger(s.homeGoals)&&Number.isInteger(s.awayGoals)&&s.homeGoals>=0&&s.awayGoals>=0){
+        m.homeGoals=s.homeGoals;m.awayGoals=s.awayGoals;
       }
-      if (!confirm("Enpòte backup sa a? Li pral ranplase done aktyèl yo.")) return;
-      data = imported;
-      saveData();
-      renderAll();
-      alert("Backup enpòte avèk siksè.");
-    } catch (e) {
-      alert("Fichye backup la pa valab.");
-    } finally {
-      event.target.value = "";
-    }
-  };
-  reader.readAsText(file);
-}
-function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, c => ({
-    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
-  })[c]);
-}
-renderAll();
+    });
+    saveResults();refresh();alert("Sovgad retabli avèk siksè.");
+  }catch(err){alert("Fichye sovgad la pa valab.");}
+  e.target.value="";
+});
+document.getElementById("resetBtn").addEventListener("click",()=>{
+  if(!confirm("Èske ou sèten ou vle efase tout rezilta yo?"))return;
+  fixtures.forEach(m=>{m.homeGoals=null;m.awayGoals=null;});
+  saveResults();refresh();alert("Tout rezilta yo efase.");
+});
+populateRounds();
+loadResults();
+refresh();
 </script>
 </body>
 </html>
