@@ -6,7 +6,7 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>LIG-1-KILLER | AETHERNAL LEAGUE 1</title>
 
@@ -14,30 +14,590 @@
 
 *{box-sizing:border-box}
 
-body{margin:0;font-family:Arial,sans-serif;background:#071426;color:white}
+body{
 
-header{background:#102d52;padding:25px 15px;text-align:center;border-bottom:4px solid #ffd700}
+  margin:0;
 
-h1{color:#ffd700;margin:0;font-size:30px}
+  font-family:Arial,sans-serif;
 
-nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:15px}
+  background:#071426;
 
-button{background:#ffd700;color:#071426;border:0;padding:12px 15px;border-radius:7px;font-weight:bold;cursor:pointer}
+  color:white;
 
-main{max-width:850px;margin:auto;padding:12px}
+}
 
-.card{background:#10233d;padding:18px;margin:15px 0;border-radius:12px}
+header{
+
+  background:#102d52;
+
+  padding:28px 12px;
+
+  text-align:center;
+
+  border-bottom:4px solid #ffd700;
+
+}
+
+h1{
+
+  color:#ffd700;
+
+  margin:0;
+
+  font-size:30px;
+
+}
+
+nav{
+
+  display:flex;
+
+  justify-content:center;
+
+  flex-wrap:wrap;
+
+  gap:8px;
+
+  padding:16px 8px;
+
+}
+
+button{
+
+  background:#ffd700;
+
+  color:#071426;
+
+  border:0;
+
+  padding:12px 14px;
+
+  border-radius:7px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+}
+
+main{
+
+  max-width:850px;
+
+  margin:auto;
+
+  padding:12px;
+
+}
+
+.card{
+
+  background:#10233d;
+
+  padding:18px;
+
+  margin:14px 0;
+
+  border-radius:12px;
+
+}
 
 h2{color:#ffd700}
 
-table{width:100%;border-collapse:collapse}
+table{
 
-th,td{padding:12px 5px;border-bottom:1px solid #34506c;text-align:center}
+  width:100%;
+
+  border-collapse:collapse;
+
+}
+
+th,td{
+
+  padding:11px 5px;
+
+  border-bottom:1px solid #34506c;
+
+  text-align:center;
+
+}
 
 th{color:#ffd700}
 
-input{padding:12px;width:100%;margin:6px 0;border-radius:6px;border:0;font-size:16px}
+input{
+
+  display:block;
+
+  width:100%;
+
+  padding:12px;
+
+  margin:8px 0;
+
+  border-radius:6px;
+
+  border:0;
+
+  font-size:16px;
+
+}
 
 #admin{display:none}
 
-footer{text-align:center;padding:25px;color:#bdcbe0}
+footer{
+
+  text-align:center;
+
+  padding:25px;
+
+  color:#bdcbe0;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <h1>🏆 LIG-1-KILLER</h1>
+
+  <p><strong>AETHERNAL LEAGUE 1</strong></p>
+
+  <p>La compétition commence ici !</p>
+
+</header>
+
+<nav>
+
+  <button onclick="section('classement')">📊 Classement</button>
+
+  <button onclick="section('equipes')">⚽ Équipes</button>
+
+  <button onclick="section('matchs')">🥅 Résultats</button>
+
+  <button onclick="admin()">🔐 Admin</button>
+
+</nav>
+
+<main>
+
+<section id="classement" class="card">
+
+  <h2>📊 Classement général</h2>
+
+  <div style="overflow-x:auto">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>#</th>
+
+          <th>Équipe</th>
+
+          <th>MJ</th>
+
+          <th>BP</th>
+
+          <th>BC</th>
+
+          <th>Pts</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody id="tableau"></tbody>
+
+    </table>
+
+  </div>
+
+  <p id="vide">Aucune équipe enregistrée.</p>
+
+</section>
+
+<section id="equipes" class="card" style="display:none">
+
+  <h2>⚽ Équipes participantes</h2>
+
+  <div id="liste">Aucune équipe enregistrée.</div>
+
+</section>
+
+<section id="matchs" class="card" style="display:none">
+
+  <h2>🥅 Résultats des matchs</h2>
+
+  <div id="resultats">Aucun résultat enregistré.</div>
+
+</section>
+
+<section id="admin" class="card">
+
+  <h2>🔐 Panneau administrateur</h2>
+
+  <h3>Ajouter une équipe</h3>
+
+  <input id="nom" placeholder="Nom de l'équipe">
+
+  <button onclick="ajouterEquipe()">Ajouter l'équipe</button>
+
+  <hr>
+
+  <h3>Enregistrer un résultat</h3>
+
+  <input id="e1" placeholder="Nom équipe 1">
+
+  <input id="s1" type="number" min="0" placeholder="Buts équipe 1">
+
+  <input id="e2" placeholder="Nom équipe 2">
+
+  <input id="s2" type="number" min="0" placeholder="Buts équipe 2">
+
+  <button onclick="ajouterMatch()">Enregistrer le résultat</button>
+
+  <p><small>Version de démonstration : les données sont enregistrées dans ce navigateur.</small></p>
+
+</section>
+
+</main>
+
+<footer>
+
+  LIG-1-KILLER © AETHERNAL LEAGUE 1
+
+</footer>
+
+<script>
+
+const KEY_TEAMS = "lig1killer_teams";
+
+const KEY_MATCHES = "lig1killer_matches";
+
+const KEY_PASSWORD = "lig1killer_password";
+
+function charger(cle){
+
+  try{
+
+    const data = JSON.parse(localStorage.getItem(cle) || "[]");
+
+    return Array.isArray(data) ? data : [];
+
+  }catch(e){
+
+    return [];
+
+  }
+
+}
+
+let equipes = charger(KEY_TEAMS);
+
+let matchs = charger(KEY_MATCHES);
+
+function enregistrer(){
+
+  try{
+
+    localStorage.setItem(KEY_TEAMS, JSON.stringify(equipes));
+
+    localStorage.setItem(KEY_MATCHES, JSON.stringify(matchs));
+
+  }catch(e){
+
+    alert("Impossible de sauvegarder les données.");
+
+  }
+
+  afficher();
+
+}
+
+function section(id){
+
+  document.querySelectorAll("main section").forEach(el=>{
+
+    el.style.display = "none";
+
+  });
+
+  document.getElementById(id).style.display = "block";
+
+}
+
+function admin(){
+
+  let mdp = localStorage.getItem(KEY_PASSWORD);
+
+  if(!mdp){
+
+    mdp = prompt("Créez votre mot de passe administrateur :");
+
+    if(!mdp) return;
+
+    if(mdp.length < 6){
+
+      alert("Le mot de passe doit contenir au moins 6 caractères.");
+
+      return;
+
+    }
+
+    localStorage.setItem(KEY_PASSWORD, mdp);
+
+    alert("Mot de passe créé pour ce navigateur.");
+
+    section("admin");
+
+    return;
+
+  }
+
+  const entree = prompt("Mot de passe administrateur :");
+
+  if(entree === mdp){
+
+    section("admin");
+
+  }else if(entree !== null){
+
+    alert("Mot de passe incorrect.");
+
+  }
+
+}
+
+function ajouterEquipe(){
+
+  const champ = document.getElementById("nom");
+
+  const nom = champ.value.trim();
+
+  if(!nom){
+
+    alert("Entrez le nom de l'équipe.");
+
+    return;
+
+  }
+
+  if(equipes.some(e => e.nom.toLowerCase() === nom.toLowerCase())){
+
+    alert("Cette équipe existe déjà.");
+
+    return;
+
+  }
+
+  equipes.push({
+
+    nom: nom,
+
+    mj: 0,
+
+    bp: 0,
+
+    bc: 0,
+
+    pts: 0
+
+  });
+
+  champ.value = "";
+
+  enregistrer();
+
+  alert("Équipe ajoutée !");
+
+}
+
+function ajouterMatch(){
+
+  const a = document.getElementById("e1").value.trim();
+
+  const b = document.getElementById("e2").value.trim();
+
+  const sx = document.getElementById("s1").value;
+
+  const sy = document.getElementById("s2").value;
+
+  const x = Number(sx);
+
+  const y = Number(sy);
+
+  if(!a || !b || a.toLowerCase() === b.toLowerCase()
+
+    || sx === "" || sy === ""
+
+    || !Number.isInteger(x) || !Number.isInteger(y)
+
+    || x < 0 || y < 0){
+
+    alert("Vérifiez les équipes et les scores.");
+
+    return;
+
+  }
+
+  const ea = equipes.find(e => e.nom.toLowerCase() === a.toLowerCase());
+
+  const eb = equipes.find(e => e.nom.toLowerCase() === b.toLowerCase());
+
+  if(!ea || !eb){
+
+    alert("Ajoutez les deux équipes avant le match.");
+
+    return;
+
+  }
+
+  ea.mj++;
+
+  eb.mj++;
+
+  ea.bp += x;
+
+  ea.bc += y;
+
+  eb.bp += y;
+
+  eb.bc += x;
+
+  if(x > y){
+
+    ea.pts += 3;
+
+  }else if(y > x){
+
+    eb.pts += 3;
+
+  }else{
+
+    ea.pts++;
+
+    eb.pts++;
+
+  }
+
+  matchs.unshift({
+
+    a: ea.nom,
+
+    b: eb.nom,
+
+    x: x,
+
+    y: y
+
+  });
+
+  ["e1","e2","s1","s2"].forEach(id=>{
+
+    document.getElementById(id).value = "";
+
+  });
+
+  enregistrer();
+
+  section("matchs");
+
+}
+
+function securiser(texte){
+
+  return String(texte).replace(/[&<>"']/g, c => ({
+
+    "&":"&amp;",
+
+    "<":"&lt;",
+
+    ">":"&gt;",
+
+    '"':"&quot;",
+
+    "'":"&#39;"
+
+  })[c]);
+
+}
+
+function afficher(){
+
+  const classement = [...equipes].sort((a,b)=>
+
+    b.pts-a.pts || (b.bp-b.bc)-(a.bp-a.bc)
+
+  );
+
+  document.getElementById("tableau").innerHTML =
+
+    classement.map((e,i)=>`
+
+      <tr>
+
+        <td>${i+1}</td>
+
+        <td>${securiser(e.nom)}</td>
+
+        <td>${e.mj}</td>
+
+        <td>${e.bp}</td>
+
+        <td>${e.bc}</td>
+
+        <td><strong>${e.pts}</strong></td>
+
+      </tr>
+
+    `).join("");
+
+  document.getElementById("vide").style.display =
+
+    classement.length ? "none" : "block";
+
+  document.getElementById("liste").innerHTML =
+
+    equipes.length
+
+      ? "<ul>" + equipes.map(e =>
+
+          "<li>" + securiser(e.nom) + "</li>"
+
+        ).join("") + "</ul>"
+
+      : "Aucune équipe enregistrée.";
+
+  document.getElementById("resultats").innerHTML =
+
+    matchs.length
+
+      ? matchs.map(m =>
+
+          "<p>" + securiser(m.a) +
+
+          " <strong>" + m.x + " - " + m.y + "</strong> " +
+
+          securiser(m.b) + "</p>"
+
+        ).join("")
+
+      : "Aucun résultat enregistré.";
+
+}
+
+afficher();
+
+section("classement");
+
+</script>
+
+</body>
+
+</html>
