@@ -1,603 +1,667 @@
 <!DOCTYPE html>
-
-<html lang="fr">
-
+<html lang="ht">
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>LIG-1-KILLER | AETHERNAL LEAGUE 1</title>
-
 <style>
-
-*{box-sizing:border-box}
-
-body{
-
-  margin:0;
-
-  font-family:Arial,sans-serif;
-
-  background:#071426;
-
-  color:white;
-
+:root {
+  --blue: #071a40;
+  --blue2: #123d7a;
+  --yellow: #ffd700;
+  --white: #ffffff;
+  --bg: #f1f4f9;
+  --green: #16864a;
 }
-
-header{
-
-  background:#102d52;
-
-  padding:28px 12px;
-
-  text-align:center;
-
-  border-bottom:4px solid #ffd700;
-
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: #18243a;
 }
-
-h1{
-
-  color:#ffd700;
-
-  margin:0;
-
-  font-size:30px;
-
+header {
+  padding: 28px 16px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg, var(--blue), var(--blue2));
+  border-bottom: 5px solid var(--yellow);
 }
-
-nav{
-
-  display:flex;
-
-  justify-content:center;
-
-  flex-wrap:wrap;
-
-  gap:8px;
-
-  padding:16px 8px;
-
+header h1 { margin: 0; font-size: clamp(25px, 5vw, 42px); }
+header h1 span { color: var(--yellow); }
+header p { margin-bottom: 0; }
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: var(--blue);
+  padding: 12px;
 }
-
-button{
-
-  background:#ffd700;
-
-  color:#071426;
-
-  border:0;
-
-  padding:12px 14px;
-
-  border-radius:7px;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
+nav button {
+  border: 1px solid #47628d;
+  padding: 11px 16px;
+  background: transparent;
+  color: white;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
 }
-
-main{
-
-  max-width:850px;
-
-  margin:auto;
-
-  padding:12px;
-
+nav button.active, nav button:hover {
+  color: var(--blue);
+  background: var(--yellow);
 }
-
-.card{
-
-  background:#10233d;
-
-  padding:18px;
-
-  margin:14px 0;
-
-  border-radius:12px;
-
+main { max-width: 1150px; margin: auto; padding: 18px; }
+.panel {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 12px #12234412;
+  overflow-x: auto;
 }
-
-h2{color:#ffd700}
-
-table{
-
-  width:100%;
-
-  border-collapse:collapse;
-
+h2 { color: var(--blue); margin-top: 0; }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
 }
-
-th,td{
-
-  padding:11px 5px;
-
-  border-bottom:1px solid #34506c;
-
-  text-align:center;
-
+.stat {
+  padding: 18px;
+  border-radius: 10px;
+  background: var(--blue);
+  color: white;
 }
-
-th{color:#ffd700}
-
-input{
-
-  display:block;
-
-  width:100%;
-
-  padding:12px;
-
-  margin:8px 0;
-
-  border-radius:6px;
-
-  border:0;
-
-  font-size:16px;
-
+.stat strong { display: block; font-size: 26px; color: var(--yellow); }
+.stat span { font-size: 13px; }
+table { border-collapse: collapse; width: 100%; min-width: 650px; }
+th, td { padding: 12px 9px; border-bottom: 1px solid #e3e8f0; text-align: center; }
+th { background: var(--blue); color: white; }
+tbody tr:nth-child(even) { background: #f6f8fc; }
+tbody tr:first-child td { font-weight: bold; }
+input, select {
+  padding: 11px;
+  border: 1px solid #ccd4e0;
+  border-radius: 7px;
+  font-size: 15px;
+  width: 100%;
+  margin: 5px 0 12px;
 }
-
-#admin{display:none}
-
-footer{
-
-  text-align:center;
-
-  padding:25px;
-
-  color:#bdcbe0;
-
+label { font-size: 14px; font-weight: bold; }
+.btn {
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  background: var(--blue);
+  color: white;
+  font-weight: bold;
+  margin: 3px;
 }
-
+.btn.yellow { background: var(--yellow); color: var(--blue); }
+.btn.red { background: #c52b35; }
+.btn.green { background: var(--green); }
+.formgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+}
+.match {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px 8px;
+  border-bottom: 1px solid #e3e8f0;
+}
+.score { font-weight: bold; color: var(--blue2); white-space: nowrap; }
+.badge {
+  display: inline-block;
+  background: #e7eef9;
+  color: var(--blue);
+  border-radius: 5px;
+  padding: 5px 8px;
+  font-size: 12px;
+}
+.hidden { display: none !important; }
+.notice { font-size: 13px; color: #536078; line-height: 1.6; }
+footer {
+  background: var(--blue);
+  color: white;
+  text-align: center;
+  padding: 22px;
+  border-top: 4px solid var(--yellow);
+}
 </style>
-
 </head>
-
 <body>
-
 <header>
-
-  <h1>🏆 LIG-1-KILLER</h1>
-
-  <p><strong>AETHERNAL LEAGUE 1</strong></p>
-
-  <p>La compétition commence ici !</p>
-
+  <h1>⚽ <span>AETHERNAL</span> LEAGUE 1</h1>
+  <p>LIG-1-KILLER · CHAMPIONSHIP OFFICIEL</p>
 </header>
-
 <nav>
-
-  <button onclick="section('classement')">📊 Classement</button>
-
-  <button onclick="section('equipes')">⚽ Équipes</button>
-
-  <button onclick="section('matchs')">🥅 Résultats</button>
-
-  <button onclick="admin()">🔐 Admin</button>
-
+  <button class="active" onclick="showTab('home',this)">🏠 Akèy</button>
+  <button onclick="showTab('table',this)">📊 Klasman</button>
+  <button onclick="showTab('matches',this)">⚽ Match yo</button>
+  <button onclick="showTab('teams',this)">👥 Ekip yo</button>
+  <button onclick="showTab('admin',this)">🔐 Admin Panel</button>
 </nav>
-
 <main>
-
-<section id="classement" class="card">
-
-  <h2>📊 Classement général</h2>
-
-  <div style="overflow-x:auto">
-
-    <table>
-
-      <thead>
-
-        <tr>
-
-          <th>#</th>
-
-          <th>Équipe</th>
-
-          <th>MJ</th>
-
-          <th>BP</th>
-
-          <th>BC</th>
-
-          <th>Pts</th>
-
-        </tr>
-
-      </thead>
-
-      <tbody id="tableau"></tbody>
-
-    </table>
-
-  </div>
-
-  <p id="vide">Aucune équipe enregistrée.</p>
-
-</section>
-
-<section id="equipes" class="card" style="display:none">
-
-  <h2>⚽ Équipes participantes</h2>
-
-  <div id="liste">Aucune équipe enregistrée.</div>
-
-</section>
-
-<section id="matchs" class="card" style="display:none">
-
-  <h2>🥅 Résultats des matchs</h2>
-
-  <div id="resultats">Aucun résultat enregistré.</div>
-
-</section>
-
-<section id="admin" class="card">
-
-  <h2>🔐 Panneau administrateur</h2>
-
-  <h3>Ajouter une équipe</h3>
-
-  <input id="nom" placeholder="Nom de l'équipe">
-
-  <button onclick="ajouterEquipe()">Ajouter l'équipe</button>
-
-  <hr>
-
-  <h3>Enregistrer un résultat</h3>
-
-  <input id="e1" placeholder="Nom équipe 1">
-
-  <input id="s1" type="number" min="0" placeholder="Buts équipe 1">
-
-  <input id="e2" placeholder="Nom équipe 2">
-
-  <input id="s2" type="number" min="0" placeholder="Buts équipe 2">
-
-  <button onclick="ajouterMatch()">Enregistrer le résultat</button>
-
-  <p><small>Version de démonstration : les données sont enregistrées dans ce navigateur.</small></p>
-
-</section>
-
+  <section id="home" class="tab">
+    <div class="stats">
+      <div class="stat"><strong id="teamCount">12</strong><span>Ekip/Jwè</span></div>
+      <div class="stat"><strong id="playedCount">0</strong><span>Match jwe</span></div>
+      <div class="stat"><strong id="remainingCount">132</strong><span>Match ki rete</span></div>
+      <div class="stat"><strong id="leaderName">—</strong><span>Lidè chanpyona a</span></div>
+    </div>
+    <div class="panel">
+      <h2>🏆 Byenveni nan AETHERNAL LEAGUE 1</h2>
+      <p>Swiv tout rezilta, match ak klasman ofisyèl LIG-1-KILLER la.</p>
+      <p><span class="badge">SISTÈM LIGA</span> <span class="badge">ALE-RETOU</span> <span class="badge">12 JWÈ</span></p>
+    </div>
+    <div class="panel">
+      <h2>🥇 Top 5 klasman</h2>
+      <div id="topFive"></div>
+    </div>
+    <div class="panel">
+      <h2>📅 Pwochen match yo</h2>
+      <div id="nextMatches"></div>
+    </div>
+  </section>
+  <section id="table" class="tab hidden">
+    <div class="panel">
+      <h2>📊 Klasman ofisyèl</h2>
+      <p class="notice">PTS = pwen · J = match jwe · V = viktwa · N = nil · D = defèt · DB = diferans gòl.</p>
+      <div id="standings"></div>
+    </div>
+  </section>
+  <section id="matches" class="tab hidden">
+    <div class="panel">
+      <h2>⚽ Tout match yo</h2>
+      <div class="formgrid">
+        <div>
+          <label>Chèche jwè</label>
+          <input id="searchMatch" placeholder="Ekri non jwè a..." oninput="renderMatches()">
+        </div>
+        <div>
+          <label>Jounen</label>
+          <select id="roundFilter" onchange="renderMatches()">
+            <option value="all">Tout jounen yo</option>
+          </select>
+        </div>
+        <div>
+          <label>Estati</label>
+          <select id="statusFilter" onchange="renderMatches()">
+            <option value="all">Tout match</option>
+            <option value="pending">Match ki poko jwe</option>
+            <option value="played">Match ki fini</option>
+          </select>
+        </div>
+      </div>
+      <div id="matchList"></div>
+    </div>
+  </section>
+  <section id="teams" class="tab hidden">
+    <div class="panel">
+      <h2>👥 Ekip ki nan chanpyona a</h2>
+      <div id="teamList"></div>
+    </div>
+  </section>
+  <section id="admin" class="tab hidden">
+    <div class="panel" id="loginPanel">
+      <h2>🔐 Aksè administratè</h2>
+      <p class="notice">Premye fwa w ap itilize sit la, kreye modpas administratè a. Chwazi yon modpas ou pa itilize lòt kote.</p>
+      <label id="passwordLabel">Kreye modpas administratè</label>
+      <input id="adminPassword" type="password" placeholder="Modpas administratè">
+      <button class="btn yellow" onclick="loginAdmin()">Antre</button>
+      <p id="loginMessage" class="notice"></p>
+    </div>
+    <div id="adminPanel" class="hidden">
+      <div class="panel">
+        <h2>⚙️ Jesyon administratè</h2>
+        <p class="notice">Ou kapab mete rezilta, ajoute oswa retire ekip, epi telechaje yon kopi done yo.</p>
+        <button class="btn red" onclick="logoutAdmin()">Dekonekte</button>
+        <button class="btn green" onclick="exportData()">Telechaje backup</button>
+        <button class="btn" onclick="document.getElementById('importFile').click()">Enpòte backup</button>
+        <input id="importFile" type="file" accept=".json" class="hidden" onchange="importData(event)">
+      </div>
+      <div class="panel">
+        <h2>✏️ Antre oswa modifye yon rezilta</h2>
+        <div class="formgrid">
+          <div><label>Jwè lakay</label><select id="homePlayer"></select></div>
+          <div><label>Gòl lakay</label><input id="homeGoals" type="number" min="0" max="99" placeholder="0"></div>
+          <div><label>Gòl deyò</label><input id="awayGoals" type="number" min="0" max="99" placeholder="0"></div>
+          <div><label>Jwè deyò</label><select id="awayPlayer"></select></div>
+        </div>
+        <button class="btn yellow" onclick="saveResult()">💾 Sove rezilta</button>
+        <button class="btn" onclick="clearResultForm()">Anile</button>
+        <p id="resultMessage" class="notice"></p>
+      </div>
+      <div class="panel">
+        <h2>➕ Ajoute yon ekip/jwè</h2>
+        <label>Non jwè a</label>
+        <input id="newTeamName" placeholder="Ekri non jwè a">
+        <button class="btn yellow" onclick="addTeam()">Ajoute jwè</button>
+      </div>
+      <div class="panel">
+        <h2>👥 Modifye oswa retire ekip</h2>
+        <div id="adminTeamList"></div>
+      </div>
+      <div class="panel">
+        <h2>🔑 Chanje modpas administratè</h2>
+        <input id="oldPassword" type="password" placeholder="Ansyen modpas">
+        <input id="newPassword" type="password" placeholder="Nouvo modpas">
+        <button class="btn yellow" onclick="changePassword()">Chanje modpas</button>
+        <p id="passwordMessage" class="notice"></p>
+      </div>
+      <div class="panel">
+        <h2>⚠️ Zòn danje</h2>
+        <button class="btn red" onclick="resetResults()">Efase tout rezilta yo</button>
+        <button class="btn red" onclick="resetLeague()">Reyinisyalize tout chanpyona a</button>
+      </div>
+    </div>
+  </section>
 </main>
-
 <footer>
-
-  LIG-1-KILLER © AETHERNAL LEAGUE 1
-
+  <strong>AETHERNAL LEAGUE 1</strong>
+  <p>LIG-1-KILLER · Tout dwa rezève</p>
 </footer>
-
 <script>
-
-const KEY_TEAMS = "lig1killer_teams";
-
-const KEY_MATCHES = "lig1killer_matches";
-
-const KEY_PASSWORD = "lig1killer_password";
-
-function charger(cle){
-
-  try{
-
-    const data = JSON.parse(localStorage.getItem(cle) || "[]");
-
-    return Array.isArray(data) ? data : [];
-
-  }catch(e){
-
-    return [];
-
-  }
-
+const STORAGE_KEY = "lig1killer_data_v1";
+const PASS_KEY = "lig1killer_admin_password_v1";
+const initialNames = [
+  "Charlito", "T-BOT DXTR", "AETHERNAL XI", "YOUR KILLER",
+  "Kalika", "Ekip 6", "Ekip 7", "Ekip 8",
+  "Ekip 9", "Ekip 10", "Ekip 11", "Ekip 12"
+];
+let data = loadData();
+let isAdmin = false;
+let editingMatchId = null;
+function defaultData() {
+  const teams = initialNames.map((name, i) => ({ id: i + 1, name }));
+  return { teams, matches: createSchedule(teams) };
 }
-
-let equipes = charger(KEY_TEAMS);
-
-let matchs = charger(KEY_MATCHES);
-
-function enregistrer(){
-
-  try{
-
-    localStorage.setItem(KEY_TEAMS, JSON.stringify(equipes));
-
-    localStorage.setItem(KEY_MATCHES, JSON.stringify(matchs));
-
-  }catch(e){
-
-    alert("Impossible de sauvegarder les données.");
-
-  }
-
-  afficher();
-
-}
-
-function section(id){
-
-  document.querySelectorAll("main section").forEach(el=>{
-
-    el.style.display = "none";
-
-  });
-
-  document.getElementById(id).style.display = "block";
-
-}
-
-function admin(){
-
-  let mdp = localStorage.getItem(KEY_PASSWORD);
-
-  if(!mdp){
-
-    mdp = prompt("Créez votre mot de passe administrateur :");
-
-    if(!mdp) return;
-
-    if(mdp.length < 6){
-
-      alert("Le mot de passe doit contenir au moins 6 caractères.");
-
-      return;
-
+function createSchedule(teams) {
+  const matches = [];
+  let id = 1;
+  const n = teams.length;
+  if (n < 2) return matches;
+  // Round-robin: chak pè jwè rankontre de fwa.
+  for (let round = 0; round < (n - 1) * 2; round++) {
+    for (let i = 0; i < n; i++) {
+      for (let j = i + 1; j < n; j++) {
+        const reverse = round >= n - 1;
+        const first = reverse ? teams[j] : teams[i];
+        const second = reverse ? teams[i] : teams[j];
+        matches.push({
+          id: id++,
+          round: round + 1,
+          home: first.id,
+          away: second.id,
+          homeGoals: null,
+          awayGoals: null
+        });
+      }
     }
-
-    localStorage.setItem(KEY_PASSWORD, mdp);
-
-    alert("Mot de passe créé pour ce navigateur.");
-
-    section("admin");
-
-    return;
-
   }
-
-  const entree = prompt("Mot de passe administrateur :");
-
-  if(entree === mdp){
-
-    section("admin");
-
-  }else if(entree !== null){
-
-    alert("Mot de passe incorrect.");
-
-  }
-
+  return matches;
 }
-
-function ajouterEquipe(){
-
-  const champ = document.getElementById("nom");
-
-  const nom = champ.value.trim();
-
-  if(!nom){
-
-    alert("Entrez le nom de l'équipe.");
-
-    return;
-
+function loadData() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed && Array.isArray(parsed.teams) && Array.isArray(parsed.matches)) {
+        return parsed;
+      }
+    }
+  } catch (e) {}
+  return defaultData();
+}
+function saveData() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch (e) {
+    alert("Navigatè a pa kapab sove done yo. Telechaje yon backup.");
   }
-
-  if(equipes.some(e => e.nom.toLowerCase() === nom.toLowerCase())){
-
-    alert("Cette équipe existe déjà.");
-
-    return;
-
-  }
-
-  equipes.push({
-
-    nom: nom,
-
-    mj: 0,
-
-    bp: 0,
-
-    bc: 0,
-
-    pts: 0
-
+}
+function teamName(id) {
+  const team = data.teams.find(t => t.id === Number(id));
+  return team ? team.name : "Ekip retire";
+}
+function showTab(id, btn) {
+  document.querySelectorAll(".tab").forEach(el => el.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+  document.querySelectorAll("nav button").forEach(el => el.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+  renderAll();
+}
+function stats() {
+  const rows = {};
+  data.teams.forEach(t => rows[t.id] = {
+    id: t.id, name: t.name, J: 0, V: 0, N: 0, D: 0,
+    BM: 0, BC: 0, PTS: 0
   });
-
-  champ.value = "";
-
-  enregistrer();
-
-  alert("Équipe ajoutée !");
-
-}
-
-function ajouterMatch(){
-
-  const a = document.getElementById("e1").value.trim();
-
-  const b = document.getElementById("e2").value.trim();
-
-  const sx = document.getElementById("s1").value;
-
-  const sy = document.getElementById("s2").value;
-
-  const x = Number(sx);
-
-  const y = Number(sy);
-
-  if(!a || !b || a.toLowerCase() === b.toLowerCase()
-
-    || sx === "" || sy === ""
-
-    || !Number.isInteger(x) || !Number.isInteger(y)
-
-    || x < 0 || y < 0){
-
-    alert("Vérifiez les équipes et les scores.");
-
-    return;
-
-  }
-
-  const ea = equipes.find(e => e.nom.toLowerCase() === a.toLowerCase());
-
-  const eb = equipes.find(e => e.nom.toLowerCase() === b.toLowerCase());
-
-  if(!ea || !eb){
-
-    alert("Ajoutez les deux équipes avant le match.");
-
-    return;
-
-  }
-
-  ea.mj++;
-
-  eb.mj++;
-
-  ea.bp += x;
-
-  ea.bc += y;
-
-  eb.bp += y;
-
-  eb.bc += x;
-
-  if(x > y){
-
-    ea.pts += 3;
-
-  }else if(y > x){
-
-    eb.pts += 3;
-
-  }else{
-
-    ea.pts++;
-
-    eb.pts++;
-
-  }
-
-  matchs.unshift({
-
-    a: ea.nom,
-
-    b: eb.nom,
-
-    x: x,
-
-    y: y
-
+  data.matches.forEach(m => {
+    if (m.homeGoals === null || m.awayGoals === null) return;
+    if (!rows[m.home] || !rows[m.away]) return;
+    const h = rows[m.home], a = rows[m.away];
+    h.J++; a.J++;
+    h.BM += m.homeGoals; h.BC += m.awayGoals;
+    a.BM += m.awayGoals; a.BC += m.homeGoals;
+    if (m.homeGoals > m.awayGoals) {
+      h.V++; h.PTS += 3; a.D++;
+    } else if (m.homeGoals < m.awayGoals) {
+      a.V++; a.PTS += 3; h.D++;
+    } else {
+      h.N++; a.N++; h.PTS++; a.PTS++;
+    }
   });
-
-  ["e1","e2","s1","s2"].forEach(id=>{
-
-    document.getElementById(id).value = "";
-
-  });
-
-  enregistrer();
-
-  section("matchs");
-
-}
-
-function securiser(texte){
-
-  return String(texte).replace(/[&<>"']/g, c => ({
-
-    "&":"&amp;",
-
-    "<":"&lt;",
-
-    ">":"&gt;",
-
-    '"':"&quot;",
-
-    "'":"&#39;"
-
-  })[c]);
-
-}
-
-function afficher(){
-
-  const classement = [...equipes].sort((a,b)=>
-
-    b.pts-a.pts || (b.bp-b.bc)-(a.bp-a.bc)
-
+  return Object.values(rows).map(t => ({
+    ...t, DB: t.BM - t.BC
+  })).sort((a, b) =>
+    b.PTS - a.PTS ||
+    b.DB - a.DB ||
+    b.BM - a.BM ||
+    a.name.localeCompare(b.name)
   );
-
-  document.getElementById("tableau").innerHTML =
-
-    classement.map((e,i)=>`
-
-      <tr>
-
-        <td>${i+1}</td>
-
-        <td>${securiser(e.nom)}</td>
-
-        <td>${e.mj}</td>
-
-        <td>${e.bp}</td>
-
-        <td>${e.bc}</td>
-
-        <td><strong>${e.pts}</strong></td>
-
-      </tr>
-
-    `).join("");
-
-  document.getElementById("vide").style.display =
-
-    classement.length ? "none" : "block";
-
-  document.getElementById("liste").innerHTML =
-
-    equipes.length
-
-      ? "<ul>" + equipes.map(e =>
-
-          "<li>" + securiser(e.nom) + "</li>"
-
-        ).join("") + "</ul>"
-
-      : "Aucune équipe enregistrée.";
-
-  document.getElementById("resultats").innerHTML =
-
-    matchs.length
-
-      ? matchs.map(m =>
-
-          "<p>" + securiser(m.a) +
-
-          " <strong>" + m.x + " - " + m.y + "</strong> " +
-
-          securiser(m.b) + "</p>"
-
-        ).join("")
-
-      : "Aucun résultat enregistré.";
-
 }
-
-afficher();
-
-section("classement");
-
+function renderStandings(target = "standings", limit = null) {
+  const list = stats();
+  const shown = limit ? list.slice(0, limit) : list;
+  const html = `<table>
+    <thead><tr><th>#</th><th>Jwè</th><th>J</th><th>V</th><th>N</th><th>D</th><th>BM</th><th>BC</th><th>DB</th><th>PTS</th></tr></thead>
+    <tbody>${shown.map((t, i) => `<tr>
+      <td>${i + 1}</td><td>${escapeHtml(t.name)}</td><td>${t.J}</td>
+      <td>${t.V}</td><td>${t.N}</td><td>${t.D}</td>
+      <td>${t.BM}</td><td>${t.BC}</td><td>${t.DB}</td><td>${t.PTS}</td>
+    </tr>`).join("")}</tbody></table>`;
+  document.getElementById(target).innerHTML = html;
+}
+function renderMatches() {
+  const query = (document.getElementById("searchMatch")?.value || "").toLowerCase();
+  const round = document.getElementById("roundFilter")?.value || "all";
+  const status = document.getElementById("statusFilter")?.value || "all";
+  const list = data.matches.filter(m => {
+    const played = m.homeGoals !== null && m.awayGoals !== null;
+    const names = (teamName(m.home) + " " + teamName(m.away)).toLowerCase();
+    return names.includes(query) &&
+      (round === "all" || String(m.round) === round) &&
+      (status === "all" || (status === "played" ? played : !played));
+  });
+  document.getElementById("matchList").innerHTML = list.length
+    ? list.map(m => {
+      const played = m.homeGoals !== null && m.awayGoals !== null;
+      return `<div class="match">
+        <div><span class="badge">Jounen ${m.round}</span><br>
+        <strong>${escapeHtml(teamName(m.home))}</strong> vs
+        <strong>${escapeHtml(teamName(m.away))}</strong></div>
+        <div class="score">${played ? `${m.homeGoals} - ${m.awayGoals}` : "VS"}</div>
+        ${isAdmin ? `<button class="btn yellow" onclick="editMatch(${m.id})">${played ? "Modifye" : "Mete rezilta"}</button>` : ""}
+      </div>`;
+    }).join("")
+    : "<p>Pa gen match ki koresponn ak rechèch la.</p>";
+}
+function renderTeams() {
+  document.getElementById("teamList").innerHTML =
+    `<table><thead><tr><th>#</th><th>Non jwè</th><th>Match jwe</th><th>Pwen</th></tr></thead><tbody>` +
+    stats().map((t, i) => `<tr><td>${i+1}</td><td>${escapeHtml(t.name)}</td><td>${t.J}</td><td>${t.PTS}</td></tr>`).join("") +
+    `</tbody></table>`;
+}
+function renderAdminTeams() {
+  const box = document.getElementById("adminTeamList");
+  if (!box) return;
+  box.innerHTML = data.teams.map(t => `
+    <div class="match">
+      <strong>${escapeHtml(t.name)}</strong>
+      <div>
+        <button class="btn" onclick="renameTeam(${t.id})">Chanje non</button>
+        <button class="btn red" onclick="removeTeam(${t.id})">Retire</button>
+      </div>
+    </div>`).join("");
+}
+function fillSelects() {
+  const options = data.teams.map(t =>
+    `<option value="${t.id}">${escapeHtml(t.name)}</option>`).join("");
+  ["homePlayer", "awayPlayer"].forEach(id => {
+    const el = document.getElementById(id);
+    const old = el.value;
+    el.innerHTML = options;
+    if ([...el.options].some(o => o.value === old)) el.value = old;
+  });
+  const roundFilter = document.getElementById("roundFilter");
+  const oldRound = roundFilter.value;
+  const rounds = [...new Set(data.matches.map(m => m.round))].sort((a,b) => a-b);
+  roundFilter.innerHTML = `<option value="all">Tout jounen yo</option>` +
+    rounds.map(r => `<option value="${r}">Jounen ${r}</option>`).join("");
+  if ([...roundFilter.options].some(o => o.value === oldRound)) roundFilter.value = oldRound;
+}
+function renderAll() {
+  const played = data.matches.filter(m => m.homeGoals !== null && m.awayGoals !== null).length;
+  document.getElementById("teamCount").textContent = data.teams.length;
+  document.getElementById("playedCount").textContent = played;
+  document.getElementById("remainingCount").textContent = data.matches.length - played;
+  document.getElementById("leaderName").textContent = stats()[0]?.name || "—";
+  renderStandings();
+  renderStandings("topFive", 5);
+  renderMatches();
+  renderTeams();
+  fillSelects();
+  document.getElementById("nextMatches").innerHTML = data.matches
+    .filter(m => m.homeGoals === null || m.awayGoals === null)
+    .slice(0, 5)
+    .map(m => `<div class="match"><span>J${m.round}: ${escapeHtml(teamName(m.home))} vs ${escapeHtml(teamName(m.away))}</span><span class="badge">Pou jwe</span></div>`)
+    .join("") || "<p>Tout match yo fini! 🏆</p>";
+  if (isAdmin) renderAdminTeams();
+}
+function loginAdmin() {
+  const pass = document.getElementById("adminPassword").value;
+  if (!pass) {
+    document.getElementById("loginMessage").textContent = "Tanpri antre yon modpas.";
+    return;
+  }
+  let stored = localStorage.getItem(PASS_KEY);
+  if (!stored) {
+    if (pass.length < 8) {
+      document.getElementById("loginMessage").textContent =
+        "Chwazi yon modpas ki gen omwen 8 karaktè.";
+      return;
+    }
+    localStorage.setItem(PASS_KEY, pass);
+    stored = pass;
+    alert("Modpas administratè kreye sou navigatè sa a.");
+  }
+  if (pass === stored) {
+    isAdmin = true;
+    document.getElementById("loginPanel").classList.add("hidden");
+    document.getElementById("adminPanel").classList.remove("hidden");
+    document.getElementById("adminPassword").value = "";
+    document.getElementById("loginMessage").textContent = "";
+    renderAll();
+  } else {
+    document.getElementById("loginMessage").textContent = "Modpas la pa kòrèk.";
+  }
+}
+function logoutAdmin() {
+  isAdmin = false;
+  document.getElementById("adminPanel").classList.add("hidden");
+  document.getElementById("loginPanel").classList.remove("hidden");
+}
+function requireAdmin() {
+  if (!isAdmin) {
+    alert("Ou dwe konekte kòm administratè.");
+    return false;
+  }
+  return true;
+}
+function editMatch(id) {
+  if (!requireAdmin()) return;
+  const m = data.matches.find(x => x.id === id);
+  if (!m) return;
+  editingMatchId = id;
+  document.getElementById("homePlayer").value = m.home;
+  document.getElementById("awayPlayer").value = m.away;
+  document.getElementById("homeGoals").value = m.homeGoals ?? "";
+  document.getElementById("awayGoals").value = m.awayGoals ?? "";
+  document.getElementById("resultMessage").textContent =
+    `W ap modifye match Jounen ${m.round}.`;
+  document.querySelector('nav button:nth-child(5)').click();
+  document.getElementById("homeGoals").focus();
+}
+function saveResult() {
+  if (!requireAdmin()) return;
+  const home = Number(document.getElementById("homePlayer").value);
+  const away = Number(document.getElementById("awayPlayer").value);
+  const hgText = document.getElementById("homeGoals").value;
+  const agText = document.getElementById("awayGoals").value;
+  const hg = Number(hgText), ag = Number(agText);
+  if (!home || !away || home === away) {
+    alert("Chwazi 2 jwè diferan.");
+    return;
+  }
+  if (hgText === "" || agText === "" ||
+      !Number.isInteger(hg) || !Number.isInteger(ag) ||
+      hg < 0 || ag < 0 || hg > 99 || ag > 99) {
+    alert("Antre kantite gòl ki kòrèk.");
+    return;
+  }
+  let match = editingMatchId
+    ? data.matches.find(m => m.id === editingMatchId)
+    : data.matches.find(m => m.home === home && m.away === away);
+  if (!match) {
+    match = data.matches.find(m => m.home === away && m.away === home);
+  }
+  if (!match) {
+    alert("Match sa a pa egziste nan kalandriye a.");
+    return;
+  }
+  if (match.home !== home || match.away !== away) {
+    alert("Chwazi jwè lakay ak jwè deyò jan yo parèt nan match la.");
+    return;
+  }
+  match.homeGoals = hg;
+  match.awayGoals = ag;
+  editingMatchId = null;
+  saveData();
+  clearResultForm();
+  renderAll();
+  document.getElementById("resultMessage").textContent = "Rezilta a anrejistre avèk siksè!";
+}
+function clearResultForm() {
+  editingMatchId = null;
+  document.getElementById("homeGoals").value = "";
+  document.getElementById("awayGoals").value = "";
+  document.getElementById("resultMessage").textContent = "";
+}
+function addTeam() {
+  if (!requireAdmin()) return;
+  const name = document.getElementById("newTeamName").value.trim();
+  if (!name) return alert("Ekri non jwè a.");
+  if (data.teams.some(t => t.name.toLowerCase() === name.toLowerCase())) {
+    return alert("Non sa a egziste deja.");
+  }
+  if (data.teams.length >= 20) return alert("Limit la se 20 jwè.");
+  const id = Math.max(0, ...data.teams.map(t => t.id)) + 1;
+  data.teams.push({ id, name });
+  data.matches = createSchedule(data.teams);
+  document.getElementById("newTeamName").value = "";
+  saveData();
+  renderAll();
+  alert("Jwè a ajoute. Kalandriye a te rekreye; verifye match yo.");
+}
+function renameTeam(id) {
+  if (!requireAdmin()) return;
+  const team = data.teams.find(t => t.id === id);
+  if (!team) return;
+  const name = prompt("Nouvo non jwè a:", team.name);
+  if (!name || !name.trim()) return;
+  if (data.teams.some(t => t.id !== id && t.name.toLowerCase() === name.trim().toLowerCase())) {
+    return alert("Non sa a deja egziste.");
+  }
+  team.name = name.trim();
+  saveData();
+  renderAll();
+}
+function removeTeam(id) {
+  if (!requireAdmin()) return;
+  if (!confirm("Retire ekip sa a? Sa ap rekreye kalandriye a epi efase rezilta ki te antre yo.")) return;
+  data.teams = data.teams.filter(t => t.id !== id);
+  data.matches = createSchedule(data.teams);
+  saveData();
+  renderAll();
+}
+function resetResults() {
+  if (!requireAdmin()) return;
+  if (!confirm("Ou vle efase tout rezilta yo?")) return;
+  data.matches.forEach(m => { m.homeGoals = null; m.awayGoals = null; });
+  saveData();
+  renderAll();
+}
+function resetLeague() {
+  if (!requireAdmin()) return;
+  if (!confirm("ATANSYON: Sa ap efase tout chanjman epi retounen nan lis ekip pa defo. Kontinye?")) return;
+  data = defaultData();
+  saveData();
+  renderAll();
+}
+function changePassword() {
+  if (!requireAdmin()) return;
+  const oldPass = document.getElementById("oldPassword").value;
+  const newPass = document.getElementById("newPassword").value;
+  if (oldPass !== localStorage.getItem(PASS_KEY)) {
+    document.getElementById("passwordMessage").textContent = "Ansyen modpas la pa kòrèk.";
+    return;
+  }
+  if (newPass.length < 8) {
+    document.getElementById("passwordMessage").textContent = "Nouvo modpas la dwe gen omwen 8 karaktè.";
+    return;
+  }
+  localStorage.setItem(PASS_KEY, newPass);
+  document.getElementById("oldPassword").value = "";
+  document.getElementById("newPassword").value = "";
+  document.getElementById("passwordMessage").textContent = "Modpas la chanje.";
+}
+function exportData() {
+  if (!requireAdmin()) return;
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "LIG-1-KILLER-backup.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function importData(event) {
+  if (!requireAdmin()) return;
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const imported = JSON.parse(reader.result);
+      if (!Array.isArray(imported.teams) || !Array.isArray(imported.matches)) {
+        throw new Error("Fòma pa valab");
+      }
+      if (!confirm("Enpòte backup sa a? Li pral ranplase done aktyèl yo.")) return;
+      data = imported;
+      saveData();
+      renderAll();
+      alert("Backup enpòte avèk siksè.");
+    } catch (e) {
+      alert("Fichye backup la pa valab.");
+    } finally {
+      event.target.value = "";
+    }
+  };
+  reader.readAsText(file);
+}
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  })[c]);
+}
+renderAll();
 </script>
-
 </body>
-
 </html>
