@@ -1,441 +1,1053 @@
 <!DOCTYPE html>
+
 <html lang="ht">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>LIG-1-KILLER | AETHERNAL LEAGUE 1</title>
+
 <style>
+
 :root {
+
   --blue: #071b49;
+
   --blue2: #123c84;
+
   --yellow: #ffd700;
+
   --bg: #f1f5fb;
+
   --white: #fff;
+
   --text: #17243b;
+
 }
+
 * { box-sizing: border-box; }
+
 body {
+
   margin: 0;
+
   font-family: Arial, sans-serif;
-  color: var(--text);
+
   background: var(--bg);
+
+  color: var(--text);
+
 }
+
 header {
+
   background: linear-gradient(135deg, var(--blue), var(--blue2));
+
   color: white;
-  padding: 28px 16px;
+
   text-align: center;
+
+  padding: 28px 12px;
+
   border-bottom: 5px solid var(--yellow);
+
 }
-header h1 { margin: 0; font-size: clamp(25px, 5vw, 40px); }
-header p { margin-bottom: 0; }
+
+header h1 { margin: 8px 0; }
+
 .badge {
+
   display: inline-block;
+
   background: var(--yellow);
+
   color: var(--blue);
-  padding: 7px 12px;
-  border-radius: 20px;
+
+  padding: 8px 16px;
+
+  border-radius: 30px;
+
   font-weight: bold;
-  margin-bottom: 12px;
+
 }
+
 nav {
+
   display: flex;
+
   flex-wrap: wrap;
+
   justify-content: center;
+
   gap: 8px;
+
   background: var(--blue);
+
   padding: 12px;
+
 }
-nav button, button {
-  border: 0;
+
+button {
+
   cursor: pointer;
+
+  border: none;
+
   border-radius: 8px;
+
   padding: 11px 14px;
+
   font-weight: bold;
+
 }
+
 nav button { background: white; color: var(--blue); }
-nav button.active, .primary { background: var(--yellow); color: var(--blue); }
-main { max-width: 1100px; margin: 22px auto; padding: 0 14px; }
-.panel {
+
+nav button.active, .primary {
+
+  background: var(--yellow);
+
+  color: var(--blue);
+
+}
+
+main {
+
+  max-width: 1100px;
+
+  margin: 22px auto;
+
+  padding: 0 14px;
+
+}
+
+.panel, .card {
+
   background: white;
+
   padding: 18px;
+
   margin-bottom: 18px;
+
   border-radius: 14px;
+
   box-shadow: 0 3px 14px #001a4210;
-  overflow-x: auto;
+
 }
-h2 { color: var(--blue); margin-top: 0; }
+
+h2 { color: var(--blue); }
+
 .cards {
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+
   gap: 12px;
+
 }
+
 .card {
-  border: 1px solid #e1e7f0;
+
   border-top: 4px solid var(--yellow);
-  padding: 14px;
-  border-radius: 10px;
+
+  margin: 0;
+
 }
-.card strong { display: block; font-size: 23px; color: var(--blue); }
-table { width: 100%; border-collapse: collapse; min-width: 620px; }
-th, td { padding: 11px 8px; text-align: center; border-bottom: 1px solid #e4eaf2; }
-th { background: var(--blue); color: white; }
-td:nth-child(2) { text-align: left; font-weight: bold; }
-tr:first-child td:first-child { color: #b8860b; font-weight: bold; }
-input, select {
+
+.card strong {
+
+  display: block;
+
+  font-size: 25px;
+
+  color: var(--blue);
+
+  margin-top: 8px;
+
+}
+
+table {
+
   width: 100%;
-  padding: 11px;
+
+  border-collapse: collapse;
+
+  min-width: 650px;
+
+}
+
+th, td {
+
+  padding: 11px 8px;
+
+  text-align: center;
+
+  border-bottom: 1px solid #e4eaf2;
+
+}
+
+th { background: var(--blue); color: white; }
+
+td:nth-child(2) { text-align: left; }
+
+.table-wrap { overflow-x: auto; }
+
+input, select {
+
+  width: 100%;
+
+  padding: 12px;
+
+  margin: 6px 0 14px;
+
   border: 1px solid #cbd5e1;
+
   border-radius: 7px;
-  margin: 5px 0 12px;
+
   background: white;
+
 }
-label { font-weight: bold; font-size: 14px; }
+
+label { font-weight: bold; }
+
 .formgrid {
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+
   gap: 12px;
+
 }
+
 .match {
+
   display: grid;
+
   grid-template-columns: 1fr auto 1fr;
-  gap: 10px;
+
   align-items: center;
-  padding: 12px 4px;
+
+  gap: 8px;
+
+  padding: 13px 0;
+
   border-bottom: 1px solid #e5eaf2;
+
 }
-.match .home { text-align: right; }
-.match .away { text-align: left; }
-.score { font-weight: bold; white-space: nowrap; color: var(--blue); }
+
+.home { text-align: right; }
+
+.away { text-align: left; }
+
+.score { font-weight: bold; color: var(--blue); white-space: nowrap; }
+
 .small { font-size: 12px; color: #667085; }
-.hidden { display: none; }
+
+.hidden { display: none !important; }
+
 .danger { background: #fee2e2; color: #991b1b; }
-footer { background: var(--blue); color: white; padding: 22px; text-align: center; }
+
+.status { font-weight: bold; }
+
+footer {
+
+  background: var(--blue);
+
+  color: white;
+
+  padding: 22px;
+
+  text-align: center;
+
+}
+
 @media(max-width: 500px) {
-  .match { grid-template-columns: 1fr auto 1fr; font-size: 13px; gap: 5px; }
+
   .panel { padding: 13px; }
+
+  .match { font-size: 12px; gap: 4px; }
+
 }
+
 </style>
+
 </head>
+
 <body>
+
 <header>
+
   <div class="badge">SAISON 2026</div>
+
   <h1>🏆 AETHERNAL LEAGUE 1</h1>
+
   <p>LIG-1-KILLER · Lig eFootball ofisyèl la</p>
+
+  <p id="connectionStatus">⏳ Koneksyon an ap verifye...</p>
+
 </header>
+
 <nav>
+
   <button class="active" data-tab="home">Akèy</button>
+
   <button data-tab="table">Klasman</button>
+
   <button data-tab="fixtures">Match yo</button>
+
   <button data-tab="results">Rezilta</button>
+
   <button data-tab="admin">Administratè</button>
+
 </nav>
+
 <main>
+
 <section id="home" class="tab">
+
   <div class="panel">
+
     <h2>Byenveni nan AETHERNAL LEAGUE 1</h2>
-    <p>12 jwè · 12 klèb · Ale-retou · 22 jounen</p>
-    <p>Chak viktwa bay 3 pwen, match nil bay 1 pwen, defèt bay 0 pwen.</p>
+
+    <p>👥 12 jwè · 12 klèb · 22 jounen</p>
+
+    <p>Chak ekip jwe 22 match: chak advèsè de fwa.</p>
+
+    <p>🏆 Viktwa: 3 pwen | Match nil: 1 pwen | Defèt: 0 pwen.</p>
+
   </div>
+
   <div class="cards">
-    <div class="card">👥 Jwè yo<strong id="totalTeams">12</strong></div>
-    <div class="card">⚽ Match total<strong id="totalMatches">132</strong></div>
+
+    <div class="card">👥 Jwè yo<strong>12</strong></div>
+
+    <div class="card">⚽ Match total<strong>132</strong></div>
+
     <div class="card">📅 Jounen<strong>22</strong></div>
+
     <div class="card">✅ Match fini<strong id="played">0</strong></div>
+
   </div>
+
   <div class="panel" style="margin-top:18px">
-    <h2>🏅 Premye plas yo</h2>
-    <div id="topThree"></div>
+
+    <h2>🥇 Premye plas yo</h2>
+
+    <div id="topThree">Klasman an ap chaje...</div>
+
   </div>
+
 </section>
+
 <section id="table" class="tab hidden">
+
   <div class="panel">
+
     <h2>📊 Klasman ofisyèl</h2>
-    <p class="small">Klasman an mete ajou otomatikman lè ou anrejistre yon rezilta.</p>
-    <table>
-      <thead><tr>
-        <th>#</th><th>Jwè / Klèb</th><th>MJ</th><th>V</th><th>N</th><th>D</th><th>GF</th><th>GA</th><th>DG</th><th>P</th>
-      </tr></thead>
-      <tbody id="tableBody"></tbody>
-    </table>
-  </div>
-</section>
-<section id="fixtures" class="tab hidden">
-  <div class="panel">
-    <h2>📅 Kalandriye match yo</h2>
-    <label for="roundSelect">Chwazi jounen</label>
-    <select id="roundSelect"></select>
-    <div id="roundMatches"></div>
-  </div>
-</section>
-<section id="results" class="tab hidden">
-  <div class="panel">
-    <h2>⚽ Rezilta anrejistre</h2>
-    <div id="resultsList"></div>
-  </div>
-</section>
-<section id="admin" class="tab hidden">
-  <div class="panel">
-    <h2>🔐 Panèl administratè</h2>
-    <p>Antre modpas la pou anrejistre oswa modifye rezilta yo sou aparèy sa a.</p>
-    <label for="password">Modpas administratè</label>
-    <input id="password" type="password" placeholder="Antre modpas la">
-    <button class="primary" id="loginBtn">Konekte</button>
-    <p id="loginMessage" role="status"></p>
-    <div id="adminArea" class="hidden">
-      <hr>
-      <h3>Anrejistre yon rezilta</h3>
-      <div class="formgrid">
-        <div><label for="matchRound">Jounen</label><select id="matchRound"></select></div>
-        <div><label for="matchSelect">Match</label><select id="matchSelect"></select></div>
-        <div><label for="homeGoals">Gòl ekip lakay</label><input id="homeGoals" type="number" min="0" max="99" placeholder="0"></div>
-        <div><label for="awayGoals">Gòl ekip deplasman</label><input id="awayGoals" type="number" min="0" max="99" placeholder="0"></div>
-      </div>
-      <button class="primary" id="saveResult">💾 Anrejistre rezilta</button>
-      <button class="danger" id="logoutBtn">Dekonekte</button>
-      <hr>
-      <h3>Sovgad done yo</h3>
-      <p class="small">Telechaje yon sovgad JSON pou konsève rezilta yo. Done yo estoke lokalman nan navigatè sa a.</p>
-      <button id="exportBtn">Telechaje sovgad</button>
-      <label for="importFile">Retabli sovgad JSON</label>
-      <input type="file" id="importFile" accept=".json,application/json">
-      <button class="danger" id="resetBtn">Efase tout rezilta yo</button>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>#</th>
+
+            <th>Jwè / Klèb</th>
+
+            <th>MJ</th>
+
+            <th>V</th>
+
+            <th>N</th>
+
+            <th>D</th>
+
+            <th>GF</th>
+
+            <th>GA</th>
+
+            <th>DG</th>
+
+            <th>P</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody id="tableBody"></tbody>
+
+      </table>
+
     </div>
+
   </div>
+
 </section>
+
+<section id="fixtures" class="tab hidden">
+
+  <div class="panel">
+
+    <h2>📅 Kalandriye match yo</h2>
+
+    <label for="roundSelect">Chwazi jounen</label>
+
+    <select id="roundSelect"></select>
+
+    <div id="roundMatches"></div>
+
+  </div>
+
+</section>
+
+<section id="results" class="tab hidden">
+
+  <div class="panel">
+
+    <h2>⚽ Rezilta ofisyèl yo</h2>
+
+    <div id="resultsList"></div>
+
+  </div>
+
+</section>
+
+<section id="admin" class="tab hidden">
+
+  <div class="panel">
+
+    <h2>🔐 Panèl administratè</h2>
+
+    <p>Se administratè a ki kapab anrejistre rezilta yo.</p>
+
+    <label for="password">Modpas administratè</label>
+
+    <input id="password" type="password" placeholder="Antre modpas la">
+
+    <button class="primary" id="loginBtn">Konekte</button>
+
+    <p id="loginMessage" class="status"></p>
+
+    <div id="adminArea" class="hidden">
+
+      <hr>
+
+      <h3>⚽ Anrejistre yon rezilta</h3>
+
+      <div class="formgrid">
+
+        <div>
+
+          <label for="matchRound">Jounen</label>
+
+          <select id="matchRound"></select>
+
+        </div>
+
+        <div>
+
+          <label for="matchSelect">Match</label>
+
+          <select id="matchSelect"></select>
+
+        </div>
+
+        <div>
+
+          <label for="homeGoals">Gòl ekip lakay</label>
+
+          <input id="homeGoals" type="number" min="0" max="99">
+
+        </div>
+
+        <div>
+
+          <label for="awayGoals">Gòl ekip deplasman</label>
+
+          <input id="awayGoals" type="number" min="0" max="99">
+
+        </div>
+
+      </div>
+
+      <button class="primary" id="saveResult">💾 Anrejistre rezilta</button>
+
+      <button id="logoutBtn">Dekonekte</button>
+
+      <hr>
+
+      <h3>🗑️ Administrasyon rezilta yo</h3>
+
+      <button class="danger" id="resetBtn">Efase tout rezilta yo</button>
+
+    </div>
+
+  </div>
+
+</section>
+
 </main>
+
 <footer>
+
   <strong>AETHERNAL LEAGUE 1</strong>
+
   <p>LIG-1-KILLER · Tout dwa rezève</p>
+
 </footer>
-<script>
-"use strict";
+
+<script type="module">
+
+import { initializeApp } from
+
+"https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+import {
+
+  getDatabase,
+
+  ref,
+
+  get,
+
+  set,
+
+  onValue
+
+} from
+
+"https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+
+/* KONFIGIRASYON FIREBASE */
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyCbYa1DhJcr7LcBlL-jv5N-NtYMzCbbb1Y",
+
+  authDomain: "lig-1-killer-319a3.firebaseapp.com",
+
+  databaseURL: "https://lig-1-killer-319a3-default-rtdb.firebaseio.com",
+
+  projectId: "lig-1-killer-319a3",
+
+  storageBucket: "lig-1-killer-319a3.firebasestorage.app",
+
+  messagingSenderId: "2208463612",
+
+  appId: "1:2208463612:web:0cd039a905bf352810b579"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getDatabase(app);
+
+const resultsRef = ref(db, "aethernalLeague/results");
+
+/* MODPAS ADMINISTRATÈ */
+
+const ADMIN_PASSWORD = "AETHERNALXI";
+
+/* LIS 12 JWÈ YO */
+
 const teams = [
+
   {player:"Charlito 2.0", club:"Como 1907"},
+
   {player:"Your Killer", club:"Rasisalai United"},
+
   {player:"It's Jedex", club:"ATM"},
+
   {player:"Lootchy", club:"Ajax"},
-  {player:"Wouch", club:"Real Madrid"},
+
+  {player:"wouch", club:"Real Madrid"},
+
   {player:"Lil.Pedji", club:"La Plata AB"},
+
   {player:"Nico", club:"Marseille"},
+
   {player:"KALIKA", club:"Manchester United"},
+
   {player:"Tom", club:"Kashiwa Reysol"},
-  {player:"Mugiwara", club:"Club América"},
+
+  {player:"Mugiwara", club:"Club America"},
+
   {player:"Dariyis", club:"Bastia"},
-  {player:"Ti Papito", club:"Barcelone"}
+
+  {player:"Ti papito", club:"Barcelone"}
+
 ];
-// Chanje modpas sa a anvan ou pibliye sit la.
-// Sekirite enpòtan: modpas ki nan HTML piblik pa ka rete sekrè.
-const ADMIN_PASSWORD = "AETHERNAL2026";
-const STORAGE_KEY = "aethernalLeagueResultsV1";
+
+/* KREYE 132 MATCH ALE-RETOU */
+
 function makeFixtures() {
-  // Round-robin: 6 match pa jounen, chak pè rankontre de fwa.
-  const list = [];
+
+  const fixtures = [];
+
+  let rotation = teams.map((_, i) => i);
+
   const n = teams.length;
-  let rotation = Array.from({length:n}, (_,i)=>i);
-  for (let round=0; round<n-1; round++) {
-    const games = [];
-    for (let i=0; i<n/2; i++) {
+
+  for (let round = 0; round < n - 1; round++) {
+
+    for (let i = 0; i < n / 2; i++) {
+
       let home = rotation[i];
-      let away = rotation[n-1-i];
-      if (round % 2 === 1) [home,away] = [away,home];
-      games.push({id:`${round+1}-${i+1}`,round:round+1,home,away,homeGoals:null,awayGoals:null});
+
+      let away = rotation[n - 1 - i];
+
+      if (round % 2 === 1) {
+
+        [home, away] = [away, home];
+
+      }
+
+      fixtures.push({
+
+        id: `${round + 1}-${i + 1}`,
+
+        round: round + 1,
+
+        home,
+
+        away
+
+      });
+
     }
-    list.push(...games);
-    rotation = [rotation[0], rotation[n-1], ...rotation.slice(1,n-1)];
+
+    rotation = [
+
+      rotation[0],
+
+      rotation[n - 1],
+
+      ...rotation.slice(1, n - 1)
+
+    ];
+
   }
-  const firstLeg = list.map(m=>({...m}));
+
+  const firstLeg = [...fixtures];
+
   firstLeg.forEach(m => {
-    list.push({
-      id:`${m.round+11}-${m.id.split("-")[1]}`,
-      round:m.round+11,
-      home:m.away,
-      away:m.home,
-      homeGoals:null,
-      awayGoals:null
+
+    fixtures.push({
+
+      id: `${m.round + 11}-${m.id.split("-")[1]}`,
+
+      round: m.round + 11,
+
+      home: m.away,
+
+      away: m.home
+
     });
+
   });
-  return list;
+
+  return fixtures;
+
 }
-let fixtures = makeFixtures();
-function loadResults() {
-  try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-    fixtures.forEach(m => {
-      const s = saved[m.id];
-      if (s && Number.isInteger(s.homeGoals) && Number.isInteger(s.awayGoals)
-          && s.homeGoals >= 0 && s.awayGoals >= 0) {
-        m.homeGoals = s.homeGoals;
-        m.awayGoals = s.awayGoals;
-      }
-    });
-  } catch (e) {
-    console.warn("Pa t kapab chaje done yo.",e);
+
+const fixtures = makeFixtures();
+
+let results = {};
+
+let isAdmin = false;
+
+let saving = false;
+
+/* ZOUTI */
+
+function escapeHTML(value) {
+
+  return String(value).replace(/[&<>"']/g, c => ({
+
+    "&": "&amp;",
+
+    "<": "&lt;",
+
+    ">": "&gt;",
+
+    '"': "&quot;",
+
+    "'": "&#39;"
+
+  })[c]);
+
+}
+
+function teamName(index) {
+
+  return `${teams[index].player} (${teams[index].club})`;
+
+}
+
+function matchScore(m) {
+
+  const r = results[m.id];
+
+  if (!r || r.homeGoals == null || r.awayGoals == null) {
+
+    return "VS";
+
   }
+
+  return `${r.homeGoals} - ${r.awayGoals}`;
+
 }
-function saveResults() {
-  const data = {};
-  fixtures.forEach(m => {
-    if (m.homeGoals !== null && m.awayGoals !== null)
-      data[m.id] = {homeGoals:m.homeGoals,awayGoals:m.awayGoals};
-  });
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
-}
-function teamName(i) {
-  return `${teams[i].player} (${teams[i].club})`;
-}
-function stats() {
-  const s = teams.map((t,i)=>({
-    i,player:t.player,club:t.club,mj:0,v:0,n:0,d:0,gf:0,ga:0,p:0
+
+/* KALKILE KLASMAN */
+
+function calculateStats() {
+
+  const stats = teams.map((t, i) => ({
+
+    i,
+
+    player: t.player,
+
+    club: t.club,
+
+    mj: 0,
+
+    v: 0,
+
+    n: 0,
+
+    d: 0,
+
+    gf: 0,
+
+    ga: 0,
+
+    p: 0
+
   }));
-  fixtures.forEach(m=>{
-    if (m.homeGoals === null || m.awayGoals === null) return;
-    const h=s[m.home], a=s[m.away];
-    h.mj++; a.mj++;
-    h.gf+=m.homeGoals; h.ga+=m.awayGoals;
-    a.gf+=m.awayGoals; a.ga+=m.homeGoals;
-    if(m.homeGoals>m.awayGoals){h.v++;a.d++;h.p+=3;}
-    else if(m.homeGoals<m.awayGoals){a.v++;h.d++;a.p+=3;}
-    else {h.n++;a.n++;h.p++;a.p++;}
+
+  fixtures.forEach(m => {
+
+    const r = results[m.id];
+
+    if (!r || r.homeGoals == null || r.awayGoals == null) {
+
+      return;
+
+    }
+
+    const hg = Number(r.homeGoals);
+
+    const ag = Number(r.awayGoals);
+
+    if (!Number.isInteger(hg) || !Number.isInteger(ag)) return;
+
+    const h = stats[m.home];
+
+    const a = stats[m.away];
+
+    h.mj++;
+
+    a.mj++;
+
+    h.gf += hg;
+
+    h.ga += ag;
+
+    a.gf += ag;
+
+    a.ga += hg;
+
+    if (hg > ag) {
+
+      h.v++;
+
+      a.d++;
+
+      h.p += 3;
+
+    } else if (hg < ag) {
+
+      a.v++;
+
+      h.d++;
+
+      a.p += 3;
+
+    } else {
+
+      h.n++;
+
+      a.n++;
+
+      h.p++;
+
+      a.p++;
+
+    }
+
   });
-  s.forEach(x=>x.dg=x.gf-x.ga);
-  return s.sort((a,b)=>b.p-a.p || b.dg-a.dg || b.gf-a.gf || a.player.localeCompare(b.player));
+
+  stats.forEach(t => t.dg = t.gf - t.ga);
+
+  return stats.sort((a, b) =>
+
+    b.p - a.p ||
+
+    b.dg - a.dg ||
+
+    b.gf - a.gf ||
+
+    a.player.localeCompare(b.player)
+
+  );
+
 }
+
+/* AFICHE KLASMAN */
+
 function renderTable() {
-  const s=stats();
-  document.getElementById("tableBody").innerHTML=s.map((t,pos)=>`
-    <tr><td>${pos+1}</td><td>${escapeHtml(t.player)}<br><span class="small">${escapeHtml(t.club)}</span></td>
-    <td>${t.mj}</td><td>${t.v}</td><td>${t.n}</td><td>${t.d}</td>
-    <td>${t.gf}</td><td>${t.ga}</td><td>${t.dg}</td><td><strong>${t.p}</strong></td></tr>
-  `).join("");
-  document.getElementById("topThree").innerHTML=s.slice(0,3).map((t,i)=>
-    `<p>${["🥇","🥈","🥉"][i]} <strong>${escapeHtml(t.player)}</strong> — ${escapeHtml(t.club)} · ${t.p} pwen</p>`
-  ).join("");
-  const played=fixtures.filter(m=>m.homeGoals!==null).length;
-  document.getElementById("played").textContent=played;
+
+  const stats = calculateStats();
+
+  document.getElementById("tableBody").innerHTML =
+
+    stats.map((t, i) => `
+
+      <tr>
+
+        <td>${i + 1}</td>
+
+        <td>
+
+          <strong>${escapeHTML(t.player)}</strong><br>
+
+          <span class="small">${escapeHTML(t.club)}</span>
+
+        </td>
+
+        <td>${t.mj}</td>
+
+        <td>${t.v}</td>
+
+        <td>${t.n}</td>
+
+        <td>${t.d}</td>
+
+        <td>${t.gf}</td>
+
+        <td>${t.ga}</td>
+
+        <td>${t.dg}</td>
+
+        <td><strong>${t.p}</strong></td>
+
+      </tr>
+
+    `).join("");
+
+  document.getElementById("topThree").innerHTML =
+
+    stats.slice(0, 3).map((t, i) => `
+
+      <p>
+
+        ${["🥇", "🥈", "🥉"][i]}
+
+        <strong>${escapeHTML(t.player)}</strong> —
+
+        ${escapeHTML(t.club)} · ${t.p} pwen
+
+      </p>
+
+    `).join("");
+
+  document.getElementById("played").textContent =
+
+    fixtures.filter(m => {
+
+      const r = results[m.id];
+
+      return r && r.homeGoals != null && r.awayGoals != null;
+
+    }).length;
+
 }
-function escapeHtml(str) {
-  return String(str).replace(/[&<>"']/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  }[c]));
+
+/* AFICHE MATCH YO */
+
+function renderMatch(m) {
+
+  return `
+
+    <div class="match">
+
+      <div class="home">${escapeHTML(teamName(m.home))}</div>
+
+      <div class="score">${matchScore(m)}</div>
+
+      <div class="away">${escapeHTML(teamName(m.away))}</div>
+
+    </div>
+
+  `;
+
 }
-function matchText(m) {
-  const score=m.homeGoals===null?"VS":`${m.homeGoals} - ${m.awayGoals}`;
-  return `<div class="match">
-    <div class="home">${escapeHtml(teamName(m.home))}</div>
-    <div class="score">${score}</div>
-    <div class="away">${escapeHtml(teamName(m.away))}</div>
-  </div>`;
-}
+
 function renderRound() {
-  const round=Number(document.getElementById("roundSelect").value || 1);
-  document.getElementById("roundMatches").innerHTML=
-    fixtures.filter(m=>m.round===round).map(matchText).join("");
+
+  const round = Number(
+
+    document.getElementById("roundSelect").value || 1
+
+  );
+
+  document.getElementById("roundMatches").innerHTML =
+
+    fixtures
+
+      .filter(m => m.round === round)
+
+      .map(renderMatch)
+
+      .join("");
+
 }
+
 function renderResults() {
-  const played=fixtures.filter(m=>m.homeGoals!==null).sort((a,b)=>a.round-b.round);
-  document.getElementById("resultsList").innerHTML=played.length
-    ?played.map(m=>`<p><strong>Jounen ${m.round}</strong>${matchText(m)}</p>`).join("")
-    :"<p>Pa gen rezilta ki anrejistre pou kounye a.</p>";
+
+  const played = fixtures
+
+    .filter(m => {
+
+      const r = results[m.id];
+
+      return r && r.homeGoals != null && r.awayGoals != null;
+
+    })
+
+    .sort((a, b) => a.round - b.round);
+
+  document.getElementById("resultsList").innerHTML =
+
+    played.length
+
+      ? played.map(m => `
+
+          <p><strong>Jounen ${m.round}</strong></p>
+
+          ${renderMatch(m)}
+
+        `).join("")
+
+      : "<p>Pa gen rezilta ki anrejistre pou kounye a.</p>";
+
 }
-function refresh() {
-  renderTable(); renderRound(); renderResults(); populateMatchSelect();
-}
-function populateMatchSelect() {
-  const round=Number(document.getElementById("matchRound").value || 1);
-  const select=document.getElementById("matchSelect");
-  const old=select.value;
-  const matches=fixtures.filter(m=>m.round===round);
-  select.innerHTML=matches.map(m=>
-    `<option value="${m.id}">${escapeHtml(teams[m.home].player)} vs ${escapeHtml(teams[m.away].player)}</option>`
-  ).join("");
-  if(matches.some(m=>m.id===old)) select.value=old;
-  showSelectedScore();
-}
-function showSelectedScore() {
-  const m=fixtures.find(x=>x.id===document.getElementById("matchSelect").value);
-  if(!m)return;
-  document.getElementById("homeGoals").value=m.homeGoals===null?"":m.homeGoals;
-  document.getElementById("awayGoals").value=m.awayGoals===null?"":m.awayGoals;
-}
+
+/* CHWAZI JOUNEN AK MATCH */
+
 function populateRounds() {
-  for(const id of ["roundSelect","matchRound"]) {
-    const el=document.getElementById(id);
-    el.innerHTML=Array.from({length:22},(_,i)=>
-      `<option value="${i+1}">Jounen ${i+1}</option>`
-    ).join("");
-  }
-}
-document.querySelectorAll("nav button").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    document.querySelectorAll(".tab").forEach(s=>s.classList.add("hidden"));
-    document.getElementById(btn.dataset.tab).classList.remove("hidden");
-    document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b===btn));
-    if(btn.dataset.tab==="table")renderTable();
-    if(btn.dataset.tab==="fixtures")renderRound();
-    if(btn.dataset.tab==="results")renderResults();
+
+  ["roundSelect", "matchRound"].forEach(id => {
+
+    document.getElementById(id).innerHTML =
+
+      Array.from({length: 22}, (_, i) =>
+
+        `<option value="${i + 1}">Jounen ${i + 1}</option>`
+
+      ).join("");
+
   });
-});
-document.getElementById("roundSelect").addEventListener("change",renderRound);
-document.getElementById("matchRound").addEventListener("change",populateMatchSelect);
-document.getElementById("matchSelect").addEventListener("change",showSelectedScore);
-document.getElementById("loginBtn").addEventListener("click",()=>{
-  const ok=document.getElementById("password").value===ADMIN_PASSWORD;
-  document.getElementById("adminArea").classList.toggle("hidden",!ok);
-  document.getElementById("loginMessage").textContent=ok
-    ?"Koneksyon reyisi. Ou kapab jere rezilta yo."
-    :"Modpas la pa kòrèk.";
-  if(ok) document.getElementById("password").value="";
-});
-document.getElementById("logoutBtn").addEventListener("click",()=>{
-  document.getElementById("adminArea").classList.add("hidden");
-  document.getElementById("loginMessage").textContent="Ou dekonekte.";
-});
-document.getElementById("saveResult").addEventListener("click",()=>{
-  const m=fixtures.find(x=>x.id===document.getElementById("matchSelect").value);
-  const h=document.getElementById("homeGoals").value;
-  const a=document.getElementById("awayGoals").value;
-  if(!m || h==="" || a==="" || !Number.isInteger(Number(h)) ||
-     !Number.isInteger(Number(a)) || Number(h)<0 || Number(a)<0 ||
-     Number(h)>99 || Number(a)>99) {
-    alert("Antre de kantite gòl valab, soti 0 rive 99.");
-    return;
+
+}
+
+function populateMatchSelect() {
+
+  const round = Number(
+
+    document.getElementById("matchRound").value || 1
+
+  );
+
+  const select = document.getElementById("matchSelect");
+
+  const oldValue = select.value;
+
+  const matches = fixtures.filter(m => m.round === round);
+
+  select.innerHTML = matches.map(m => `
+
+    <option value="${m.id}">
+
+      ${escapeHTML(teams[m.home].player)}
+
+      vs
+
+      ${escapeHTML(teams[m.away].player)}
+
+    </option>
+
+  `).join("");
+
+  if (matches.some(m => m.id === oldValue)) {
+
+    select.value = oldValue;
+
   }
-  m.homeGoals=Number(h); m.awayGoals=Number(a);
-  saveResults(); refresh();
-  alert("Rezilta a anrejistre sou navigatè sa a!");
-});
-document.getElementById("exportBtn").addEventListener("click",()=>{
-  const blob=new Blob([JSON.stringify(JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}"),null,2)],{type:"application/json"});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");
-  a.href=url;a.download="aethernal-league-sovgad.json";a.click();
-  URL.revokeObjectURL(url);
-});
-document.getElementById("importFile").addEventListener("change",async e=>{
-  const file=e.target.files[0]; if(!file)return;
-  try{
-    const obj=JSON.parse(await file.text());
-    if(!obj||typeof obj!=="object"||Array.isArray(obj))throw new Error();
-    fixtures.forEach(m=>{
-      const s=obj[m.id];
-      m.homeGoals=null;m.awayGoals=null;
-      if(s&&Number.isInteger(s.homeGoals)&&Number.isInteger(s.awayGoals)&&s.homeGoals>=0&&s.awayGoals>=0){
-        m.homeGoals=s.homeGoals;m.awayGoals=s.awayGoals;
-      }
+
+  showSelectedScore();
+
+}
+
+function showSelectedScore() {
+
+  const id = document.getElementById("matchSelect").value;
+
+  const r = results[id];
+
+  document.getElementById("homeGoals").value =
+
+    r && r.homeGoals != null ? r.homeGoals : "";
+
+  document.getElementById("awayGoals").value =
+
+    r && r.awayGoals != null ? r.awayGoals : "";
+
+}
+
+function refresh() {
+
+  renderTable();
+
+  renderRound();
+
+  renderResults();
+
+  populateMatchSelect();
+
+}
+
+/* NAVIGASYON */
+
+document.querySelectorAll("nav button").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    document.querySelectorAll(".tab").forEach(section => {
+
+      section.classList.add("hidden");
+
     });
-    saveResults();refresh();alert("Sovgad retabli avèk siksè.");
-  }catch(err){alert("Fichye sovgad la pa valab.");}
-  e.target.value="";
-});
-document.getElementById("resetBtn").addEventListener("click",()=>{
-  if(!confirm("Èske ou sèten ou vle efase tout rezilta yo?"))return;
-  fixtures.forEach(m=>{m.homeGoals=null;m.awayGoals=null;});
-  saveResults();refresh();alert("Tout rezilta yo efase.");
-});
-populateRounds();
-loadResults();
-refresh();
-</script>
-</body>
-</html>
+
+    document.getElementById(button.dataset.tab)
+
+      .class
